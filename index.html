@@ -20,6 +20,11 @@
         {
             font-size: 3em;
         }
+
+        .text
+        {
+            border: 1px solid #080808;
+        }
     </style>
 </head>
 <body>
@@ -46,12 +51,11 @@
         <span onclick="ljVideoEditor.back(0.1)" class="glyphicon glyphicon-chevron-left"><!-- < --></span>
         <span onclick="ljVideoEditor.jump(0.1)" class="glyphicon glyphicon-chevron-right"><!-- > --></span>
         <span onclick="ljVideoEditor.jump(1)"   class="glyphicon glyphicon-forward"><!-- >> --></span>
+        <span onclick="ljVideoEditor.createNewText()" class="glyphicon glyphicon-font"><!-- 新增字幕 --></span>
         <div id="timeStatus"></div>
     </div>
     <!-- 字幕 -->
     <div id="texts">
-        <div class="text" data-start="1" data-end="2">1s to 2s</div>
-        <div class="text" data-start="4" data-end="5">4s to 5s</div>
     </div>
 </div>
 </body>

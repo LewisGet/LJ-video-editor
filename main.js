@@ -87,3 +87,60 @@ ljVideoEditor.videoClick = function () {
         ljVideoEditor.play();
     }
 };
+
+ljVideoEditor.createNewText = function (defaultText)
+{
+    var text = document.createElement("div");
+
+    if (defaultText)
+    {
+        text.innerHTML = defaultText;
+    }
+
+    text.setAttribute("data-start", ljVideoEditor.getNowTime());
+    text.setAttribute("data-end", ljVideoEditor.getNowTime() + 2.0);
+    text.setAttribute("contenteditable", "plaintext-only");
+
+    text = ljVideoEditor.textTimeCrecker(text);
+
+    text.className = "text";
+
+    window.texts.appendChild(text);
+};
+
+ljVideoEditor.textTimeCrecker = function (text) {
+
+    var texts = window.texts.getElementsByClassName("text");
+
+    for (var i = 0; i < texts.length; i++)
+    {
+        var checkText = texts[i];
+        var checkStart = checkText.getAttribute("data-start");
+        var checkEnd = checkText.getAttribute("data-end");
+
+        if (
+            // 如果發現字幕開始時間 在 要新增字幕的結束範圍內
+            checkStart < text.getAttribute("data-end")
+                &&
+            // 而且比對字幕要在 這份字幕後
+            checkStart > text.getAttribute("data-start")
+           )
+        {
+            // 將結束時間給予他開始的時間
+            text.setAttribute("data-end", checkStart);
+        }
+
+        if (
+            // 如果這組字幕 結束時間 比現在要新增的字幕要多時
+            checkEnd > text.getAttribute("data-start")
+                &&
+            // 而且比對字幕必須是 在這份字幕之前
+            checkStart < text.getAttribute("data-start")
+           )
+        {
+            checkText.setAttribute("data-end", text.getAttribute("data-start"));
+        }
+    }
+
+    return text;
+};
