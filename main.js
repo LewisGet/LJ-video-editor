@@ -9,6 +9,16 @@ ljVideoEditor.getMod = function () {
     {
         ljVideoEditor.mod = mod;
     }
+
+    if (! ljVideoEditor.isFullMod())
+    {
+        var advanceds = document.getElementsByClassName("advanced");
+
+        for (var i = 0; i < advanceds.length; i++)
+        {
+            advanceds[i].style.display = "none";
+        }
+    }
 };
 
 ljVideoEditor.isFullMod = function () {
@@ -188,4 +198,3 @@ ljVideoEditor.init = function () {
     ljVideoEditor.getMod();
 };
 
-ljVideoEditor.init();

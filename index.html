@@ -18,7 +18,7 @@
 
         .glyphicon
         {
-            font-size: 3em;
+            font-size: 2em;
         }
 
         .text
@@ -46,11 +46,11 @@
     >
         <source id="videoUrl" src="" />
     </video>
-    <div id="timeController">
+    <div id="controller">
         <span onclick="ljVideoEditor.back(1)"   class="glyphicon glyphicon-backward"><!-- << --></span>
         <span onclick="ljVideoEditor.back(0.1)" class="glyphicon glyphicon-chevron-left"><!-- < --></span>
-        <span onclick="ljVideoEditor.jump(0.1)" class="glyphicon glyphicon-chevron-right"><!-- > --></span>
-        <span onclick="ljVideoEditor.jump(1)"   class="glyphicon glyphicon-forward"><!-- >> --></span>
+        <span onclick="ljVideoEditor.jump(0.1)" class="advanced glyphicon glyphicon-chevron-right"><!-- > --></span>
+        <span onclick="ljVideoEditor.jump(1)"   class="advanced glyphicon glyphicon-forward"><!-- >> --></span>
         <span onclick="ljVideoEditor.createNewText()" class="glyphicon glyphicon-font"><!-- 新增字幕 --></span>
         <span onclick="ljVideoEditor.copyLast()" class="glyphicon glyphicon-file"><!-- 複製上個字幕 --></span>
         <div id="timeStatus"></div>
@@ -58,6 +58,12 @@
     <!-- 字幕 -->
     <div id="texts">
     </div>
+    <div id="timeController">
+
+    </div>
 </div>
+<script>
+    ljVideoEditor.init();
+</script>
 </body>
 </html>
