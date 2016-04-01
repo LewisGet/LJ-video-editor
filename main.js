@@ -1,5 +1,35 @@
 var ljVideoEditor = {
-    mod: "full"
+    mod: "full",
+    blockId: 0
+};
+
+ljVideoEditor.text = {
+    select: undefined,
+    displayId: "tid-",
+};
+
+ljVideoEditor.text.getTextDom = function (id) {
+    return document.getElementById(ljVideoEditor.text.displayId + id.toString());
+};
+
+ljVideoEditor.text.getIntId = function (text) {
+    return parseInt((text.split("-"))[1]);
+};
+
+ljVideoEditor.text.getStartTime = function (id) {
+    return ljVideoEditor.text.getTextDom(id).getAttribute("data-start");
+};
+
+ljVideoEditor.text.getEndTime = function (id) {
+    return ljVideoEditor.text.getTextDom(id).getAttribute("data-end");
+};
+
+ljVideoEditor.text.setStartTime = function (id, val) {
+    return ljVideoEditor.text.getTextDom(id).setAttribute("data-start", val);
+};
+
+ljVideoEditor.text.setEndTime = function (id, val) {
+    return ljVideoEditor.text.getTextDom(id).setAttribute("data-end", val);
 };
 
 ljVideoEditor.getMod = function () {
@@ -92,8 +122,9 @@ ljVideoEditor.updateTimeController = function () {
 ljVideoEditor.textDisplay = function (text) {
     text.style.display = "none";
 
-    var startTime = text.getAttribute("data-start");
-    var endTime = text.getAttribute("data-end");
+    var tid = ljVideoEditor.text.getIntId(text.id);
+    var startTime = ljVideoEditor.text.getStartTime(tid);
+    var endTime = ljVideoEditor.text.getEndTime(tid);
 
     // 如果現在還沒超過結束時間，而且現在播放時間超過起始時間
     if (ljVideoEditor.getNowTime() < endTime && ljVideoEditor.getNowTime() > startTime)
@@ -132,16 +163,19 @@ ljVideoEditor.createNewText = function (defaultText)
         text.innerHTML = defaultText;
     }
 
-    text.setAttribute("data-start", ljVideoEditor.getNowTime());
-    text.setAttribute("data-end", ljVideoEditor.getNowTime() + 2.0);
+    var id = (ljVideoEditor.blockId).toString();
+    text.id = ljVideoEditor.text.displayId + id;
+    text.className = "text";
+
+    // 先登記才能使用 get set function
+    window.texts.appendChild(text);
+    ljVideoEditor.blockId++;
+
+    ljVideoEditor.text.setStartTime(id, ljVideoEditor.getNowTime());
+    ljVideoEditor.text.setEndTime(id, ljVideoEditor.getNowTime() + 2.0);
     text.setAttribute("contenteditable", "plaintext-only");
 
     text = ljVideoEditor.textTimeCrecker(text);
-
-    text.className = "text";
-
-    window.texts.appendChild(text);
-
     text.focus();
 };
 
@@ -152,30 +186,40 @@ ljVideoEditor.textTimeCrecker = function (text) {
     for (var i = 0; i < texts.length; i++)
     {
         var checkText = texts[i];
-        var checkStart = checkText.getAttribute("data-start");
-        var checkEnd = checkText.getAttribute("data-end");
+        var tid = ljVideoEditor.text.getIntId(text.id);
+        var cid = ljVideoEditor.text.getIntId(checkText.id);
+        var checkStart = ljVideoEditor.text.getStartTime(cid);
+        var checkEnd = ljVideoEditor.text.getEndTime(cid);
+        var textStart = ljVideoEditor.text.getStartTime(tid);
+        var textEnd = ljVideoEditor.text.getEndTime(tid);
+
+        // 自比不需要比對自己。
+        if (cid == tid)
+        {
+            continue;
+        }
 
         if (
             // 如果發現字幕開始時間 在 要新增字幕的結束範圍內
-            checkStart < text.getAttribute("data-end")
+            checkStart < textEnd
                 &&
             // 而且比對字幕要在 這份字幕後
-            checkStart > text.getAttribute("data-start")
+            checkStart > textStart
            )
         {
             // 將結束時間給予他開始的時間
-            text.setAttribute("data-end", checkStart);
+            ljVideoEditor.text.setEndTime(tid, checkStart);
         }
 
         if (
             // 如果這組字幕 結束時間 比現在要新增的字幕要多時
-            checkEnd > text.getAttribute("data-start")
+            checkEnd > textStart
                 &&
             // 而且比對字幕必須是 在這份字幕之前
-            checkStart < text.getAttribute("data-start")
+            checkStart < textStart
            )
         {
-            checkText.setAttribute("data-end", text.getAttribute("data-start"));
+            ljVideoEditor.text.setEndTime(cid, textStart);
         }
     }
 
