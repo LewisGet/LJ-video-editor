@@ -106,6 +106,8 @@ ljVideoEditor.createNewText = function (defaultText)
     text.className = "text";
 
     window.texts.appendChild(text);
+
+    text.focus();
 };
 
 ljVideoEditor.textTimeCrecker = function (text) {
