@@ -50,15 +50,20 @@ ljVideoEditor.openVideo = function () {
     // open main panel
     window.mainPanel.style.display = "";
 
+    ljVideoEditor.setVideoDisplaySize();
+};
+
+ljVideoEditor.setVideoDisplaySize = function () {
+    window.videoDisplay.width = window.innerWidth;
 
     // set video max height
-    if (ljVideoEditor.isFullMod)
+    if (ljVideoEditor.isFullMod())
     {
-        videoDisplay.height = window.innerHeight / 2;
+        window.videoDisplay.height = window.innerHeight - 100;
     }
     else
     {
-        videoDisplay.height = window.innerHeight / 3;
+        window.videoDisplay.height = window.innerHeight / 3;
     }
 };
 
