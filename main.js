@@ -1,5 +1,18 @@
 var ljVideoEditor = {
+    mod: "full"
+};
 
+ljVideoEditor.getMod = function () {
+    var mod = decodeURIComponent(location.search.replace("?", ""));
+
+    if (mod)
+    {
+        ljVideoEditor.mod = mod;
+    }
+};
+
+ljVideoEditor.isFullMod = function () {
+    return ljVideoEditor.mod == "full";
 };
 
 ljVideoEditor.getNowTime = function () {
@@ -39,7 +52,14 @@ ljVideoEditor.openVideo = function () {
 
 
     // set video max height
-    videoDisplay.height = window.innerHeight / 2;
+    if (ljVideoEditor.isFullMod)
+    {
+        videoDisplay.height = window.innerHeight / 2;
+    }
+    else
+    {
+        videoDisplay.height = window.innerHeight / 3;
+    }
 };
 
 ljVideoEditor.updateTimeController = function () {
@@ -158,3 +178,9 @@ ljVideoEditor.copyLast = function () {
 
     ljVideoEditor.createNewText(text);
 };
+
+ljVideoEditor.init = function () {
+    ljVideoEditor.getMod();
+};
+
+ljVideoEditor.init();
