@@ -144,3 +144,15 @@ ljVideoEditor.textTimeCrecker = function (text) {
 
     return text;
 };
+
+ljVideoEditor.copyLast = function () {
+    var last = document.querySelector(".text:last-child");
+    var text = "";
+
+    if (last)
+    {
+        text = document.querySelector(".text:last-child").innerHTML;
+    }
+
+    ljVideoEditor.createNewText(text);
+};
