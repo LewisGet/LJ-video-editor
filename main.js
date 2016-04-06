@@ -3,7 +3,7 @@ var ljVideoEditor = {
 };
 
 ljVideoEditor.flushTime = function () {
-    var time = 0;
+    var time = ljVideo.getTime();
 
     ljDisplay.flushTime(time);
     ljUi.flushTime(time);

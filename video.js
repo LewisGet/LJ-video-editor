@@ -21,3 +21,20 @@ ljVideo.isPlaying = function () {
     return ! (window.displayVideo.paused);
 };
 
+ljVideo.getTotalTime = function () {
+    return window.displayVideo.duration;
+};
+
+ljVideo.setTime = function (time) {
+    window.displayVideo.currentTime = time;
+
+    ljVideoEditor.flushTime();
+};
+
+ljVideo.getTime = function () {
+    return window.displayVideo.currentTime;
+};
+
+ljVideo.isRead = function () {
+    return (window.displayVideo.readyState == 4) && (ljVideo.getTotalTime() != 0)
+};
