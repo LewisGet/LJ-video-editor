@@ -61,3 +61,18 @@ ljInput.getBlockEnd = function (id) {
     return data.getAttribute("e");
 };
 
+ljInput.setBlockContent = function (id, value) {
+    var data = document.getElementById(ljInput.prefix + id);
+    var display = document.getElementById(ljDisplay.prefix + id);
+
+    data.innerText = value;
+    display.innerText = value;
+};
+
+ljInput.setBlockStyle = function (id, style, value) {
+    var data = document.getElementById(ljInput.prefix + id);
+    var display = document.getElementById(ljDisplay.prefix + id);
+
+    data.style[style] = value;
+    display.style[style] = value;
+};
