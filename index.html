@@ -6,32 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LJ Video Editor</title>
     <link type="text/css" rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./input.js" type="text/javascript"></script>
+    <script src="./display.js" type="text/javascript"></script>
+    <script src="./ui.js" type="text/javascript"></script>
     <script src="./main.js" type="text/javascript"></script>
     <style>
         html, body
         {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
+            width: 100%;
+            overflow-x: hidden;
         }
 
-        .glyphicon
+        #project
         {
-            font-size: 2em;
+            display: none;
         }
 
-        .text
+        #controllerPanel
         {
-            border: 1px solid #080808;
+            width: 100%;
+            overflow-x: scroll;
         }
     </style>
 </head>
 <body>
+<!-- 專案內容 -->
+<div id="project">
+
+</div>
+<!-- 開起影片介面 -->
 <div id="openPanel">
     <p>
         open video <input id="openUrl" type="file" /> <button onclick="ljVideoEditor.openVideo()"> open </button>
     </p>
+    <textarea id="loader">
+
+    </textarea>
     - or -
     <p>
         <select id="localStorage">
@@ -39,29 +49,37 @@
         </select>
     </p>
 </div>
-<div id="mainPanel">
-    <video id="videoDisplay"
-        ontimeupdate="ljVideoEditor.updateTimeController()"
-        onclick="ljVideoEditor.videoClick()"
+<!-- 區塊內容輸入 -->
+<div id="inputPanel">
+</div>
+<!-- 顯示 -->
+<div id="displayPanel">
+    <!-- 影片顯示 -->
+    <video id="displayVideo"
+        ontimeupdate="ljVideoEditor.flushTime()"
+        onclick="ljUi.videoClick()"
     >
-        <source id="videoUrl" src="" />
+        <source id="displayVideoUrl" src="" />
     </video>
-    <div id="controller">
-        <span onclick="ljVideoEditor.back(1)"   class="glyphicon glyphicon-backward"><!-- << --></span>
-        <span onclick="ljVideoEditor.back(0.1)" class="glyphicon glyphicon-chevron-left"><!-- < --></span>
-        <span onclick="ljVideoEditor.jump(0.1)" class="advanced glyphicon glyphicon-chevron-right"><!-- > --></span>
-        <span onclick="ljVideoEditor.jump(1)"   class="advanced glyphicon glyphicon-forward"><!-- >> --></span>
-        <span onclick="ljVideoEditor.createNewText()" class="glyphicon glyphicon-font"><!-- 新增字幕 --></span>
-        <span onclick="ljVideoEditor.copyLast()" class="glyphicon glyphicon-file"><!-- 複製上個字幕 --></span>
-        <div id="timeStatus"></div>
-    </div>
-    <!-- 字幕 -->
-    <div id="texts">
-    </div>
-    <div id="timeController">
+    <!-- 後製效果顯示 -->
+    <div id="displayBlocks">
 
     </div>
 </div>
+<!-- 選擇與控制 -->
+<div id="controllerPanel">
+    <div id="controllerTime">
+        <!-- 總影片時間 -->
+        <!-- width = window.innerWidth + video time -->
+        <div id="controllerTimeTotal"></div>
+        <!-- 其他區塊空置器 -->
+        <!-- <div id="time-1" start="1" end="2" style="top:1; left:2; color: #000;">content</div> -->
+    </div>
+    <div>
+
+    </div>
+</div>
+<!-- 輸入 -->
 <script>
     ljVideoEditor.init();
 </script>
