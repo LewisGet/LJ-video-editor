@@ -21,8 +21,8 @@ ljInput.createBlocks = function () {
     ljInput.setBlockEnd(id, ljVideo.getTime() + 2.5);
 };
 
-ljInput.getBlock = function (id) {
-
+ljInput.getBlockId = function (id) {
+    return parseInt((id.split("-"))[1]);
 };
 
 ljInput.setBlockStart = function (id, value) {
