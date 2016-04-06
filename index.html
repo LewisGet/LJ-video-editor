@@ -77,12 +77,11 @@
     <!-- 影片顯示 -->
     <video id="displayVideo"
         ontimeupdate="ljVideoEditor.flushTime()"
-        onclick="ljUi.videoClick()"
     >
         <source id="displayVideoUrl" src="" />
     </video>
     <!-- 後製效果顯示 -->
-    <div id="displayBlocks">
+    <div id="displayBlocks" onclick="ljUi.videoClick()">
 
     </div>
 </div>
