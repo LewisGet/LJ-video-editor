@@ -7,6 +7,9 @@ ljVideo.open = function (file) {
 
     window.displayVideoUrl.src = url;
     window.displayVideo.load();
+
+    // for android
+    window.displayVideo.play();
 };
 
 ljVideo.stop = function () {
