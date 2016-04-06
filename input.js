@@ -76,3 +76,21 @@ ljInput.setBlockStyle = function (id, style, value) {
     data.style[style] = value;
     display.style[style] = value;
 };
+
+ljInput.getBlockContent = function (id) {
+    var data = document.getElementById(ljInput.prefix + id);
+
+    return data.innerText;
+};
+
+ljInput.getBlockStyle = function (id, style) {
+    var data = document.getElementById(ljInput.prefix + id);
+
+    return data.style[style];
+};
+
+ljInput.updateBlocks = function () {
+    ljInput.setBlockContent(ljInput.select, window.inputContent.value);
+
+    ljInput.setBlockStyle(ljInput.select, "color", window.inputColor.value)
+};

@@ -46,6 +46,19 @@
         #displayBlocks
         {
             position: fixed;
+            z-index: 2;
+        }
+
+        #inputPanel
+        {
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background-color: #fff;
         }
     </style>
 </head>
@@ -71,6 +84,19 @@
 </div>
 <!-- 區塊內容輸入 -->
 <div id="inputPanel">
+    <div class="form-group">
+        <h3 id="inputSelect"></h3>
+        <button onclick="ljUi.closeModifyPanel()" class="btn btn-default">x</button>
+        <button onclick="ljUi.updateBlocks()" class="btn btn-default">Submit</button>
+    </div>
+    <div class="form-group">
+        <label for="inputContent">Content</label>
+        <input type="text" class="form-control" id="inputContent" placeholder="content">
+    </div>
+    <div class="form-group">
+        <label for="inputColor">Color</label>
+        <input type="text" class="form-control" id="inputColor" placeholder="color">
+    </div>
 </div>
 <!-- 顯示 -->
 <div id="displayPanel">
@@ -88,6 +114,8 @@
 <!-- 選擇與控制 -->
 <div id="controllerPanel">
     <span onclick="ljInput.createBlocks()" class="glyphicon glyphicon-font"><!-- 新增字幕 --></span>
+    <span onclick="ljUi.openModifyPanel()" class="glyphicon glyphicon-pencil"><!-- 新增字幕 --></span>
+
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
         <!-- 總影片時間 -->
         <!-- width = window.innerWidth + video time -->

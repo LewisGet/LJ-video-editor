@@ -7,6 +7,9 @@ ljTime.createBlocks = function (id) {
 
     block.id = ljTime.prefix + id;
     block.style.background = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+    block.onclick = function () {
+        ljInput.select = ljInput.getBlockId(this.id);
+    };
 
     window.controllerTime.appendChild(block);
 };

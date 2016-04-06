@@ -67,6 +67,24 @@ ljUi.displaySize = function () {
     doSize();
 };
 
-ljUi.init = function () {
+ljUi.openModifyPanel = function () {
+    window.inputSelect = ljInput.select;
+    window.inputContent.value = ljInput.getBlockContent(ljInput.select);
+    window.inputColor.value = ljInput.getBlockStyle(ljInput.select, "color");
 
+    window.inputPanel.style.display = "";
+};
+
+ljUi.closeModifyPanel = function () {
+    window.inputPanel.style.display = "none";
+};
+
+ljUi.updateBlocks = function () {
+    ljInput.updateBlocks();
+
+    ljUi.closeModifyPanel();
+};
+
+ljUi.init = function () {
+    ljUi.closeModifyPanel();
 };
