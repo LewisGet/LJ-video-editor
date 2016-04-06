@@ -4,7 +4,16 @@ var ljInput = {
 };
 
 ljInput.createBlocks = function () {
+    var block = document.createElement("b");
 
+    var id = ljInput.blocks;
+    block.id = ljInput.prefix + ljInput.blocks;
+
+    window.project.appendChild(block);
+    ljInput.blocks++;
+
+    ljTime.createBlocks(id);
+    ljDisplay.createBlocks(id);
 };
 
 ljInput.getBlock = function (id) {

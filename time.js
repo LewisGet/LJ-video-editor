@@ -2,7 +2,13 @@ var ljTime = {
     prefix: "t-",
 };
 
-ljTime.createTimeBlock = function () {
+ljTime.createBlocks = function (id) {
+    var block = document.createElement("div");
+
+    block.id = ljTime.prefix + id;
+    block.style.background = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+
+    window.controllerTime.appendChild(block);
 };
 
 ljTime.videoTimeBlock = function () {
