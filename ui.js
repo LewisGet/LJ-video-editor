@@ -85,6 +85,12 @@ ljUi.updateBlocks = function () {
     ljUi.closeModifyPanel();
 };
 
+ljUi.createBlocks = function () {
+    ljInput.createBlocks();
+
+    ljUi.openModifyPanel();
+};
+
 ljUi.init = function () {
     ljUi.closeModifyPanel();
 };
