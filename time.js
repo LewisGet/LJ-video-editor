@@ -11,6 +11,14 @@ ljTime.createBlocks = function (id) {
     window.controllerTime.appendChild(block);
 };
 
+ljTime.afterSetBlockStart = function (dom, value) {
+    dom.style.left = (value * 100).toString() + "px";
+};
+
+ljTime.afterSetBlockEnd = function (dom, value) {
+    dom.style.width = (value * 100).toString() + "px";
+};
+
 ljTime.videoTimeBlock = function () {
     window.controllerTimeTotal.style.width = (window.innerWidth + parseInt(ljVideo.getTotalTime() * 100)).toString() + "px";
 };
