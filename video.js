@@ -38,3 +38,17 @@ ljVideo.getTime = function () {
 ljVideo.isRead = function () {
     return (window.displayVideo.readyState == 4) && (ljVideo.getTotalTime() != 0)
 };
+
+ljVideo.afterVideoInit = function () {
+    if (! ljVideo.isRead())
+    {
+        setTimeout("ljVideo.afterVideoInit()", 100);
+
+        return false;
+    }
+
+    ljUi.displaySize();
+    ljTime.init();
+
+    return true;
+};

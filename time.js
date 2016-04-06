@@ -10,14 +10,5 @@ ljTime.videoTimeBlock = function () {
 };
 
 ljTime.init = function () {
-    if (! ljVideo.isRead())
-    {
-        setTimeout("ljTime.init()", 100);
-
-        return false;
-    }
-
     ljTime.videoTimeBlock();
-
-    return true;
 };
