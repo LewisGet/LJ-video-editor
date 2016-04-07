@@ -44,8 +44,8 @@ ljUi.displaySize = function () {
     window.displayVideo.height = window.innerHeight / 2;
     window.displayBlocks.style.width = window.displayVideo.width.toString() + "px";
     window.displayBlocks.style.height = window.displayVideo.height.toString() + "px";
-    window.displayBlocks.style.top = window.displayVideo.scrollTop.toString() + "px";
-    ljUi.topOffset = window.displayVideo.scrollTop.toString();
+    window.displayBlocks.style.top = window.displayVideo.offsetTop.toString() + "px";
+    ljUi.topOffset = window.displayVideo.offsetTop.toString();
 
     var zoomW = window.displayVideo.width / window.displayVideo.videoWidth;
     var zoomH = window.displayVideo.height / window.displayVideo.videoHeight;
@@ -70,6 +70,15 @@ ljUi.displaySize = function () {
     }
 
     doSize();
+};
+
+ljUi.controllerTimeSize = function () {
+    var h = window.innerHeight - window.controllerTime.offsetTop;
+
+    if (h > 80)
+    {
+        window.controllerTime.style.height = h.toString() + "px";
+    }
 };
 
 ljUi.openModifyPanel = function () {
