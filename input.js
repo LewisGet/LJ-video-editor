@@ -92,5 +92,16 @@ ljInput.getBlockStyle = function (id, style) {
 ljInput.updateBlocks = function () {
     ljInput.setBlockContent(ljInput.select, window.inputContent.value);
 
-    ljInput.setBlockStyle(ljInput.select, "color", window.inputColor.value)
+    var styleModifies = ['color', 'left', 'right', 'top', 'bottom'];
+
+    for (var i = 0; i < styleModifies.length; i++)
+    {
+        var key = styleModifies[i];
+
+        ljInput.setBlockStyle(ljInput.select, key, window['input' + ljInput.firstBigChr(key)].value);
+    }
+};
+
+ljInput.firstBigChr = function (s) {
+    return s.toUpperCase().charAt(0) + s.substring(1);
 };

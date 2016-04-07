@@ -1,5 +1,7 @@
 var ljUi = {
-    prefix: "ui-"
+    prefix: "ui-",
+    topOffset: 0,
+    leftOffset: 0
 };
 
 ljUi.openVideo = function () {
@@ -43,6 +45,7 @@ ljUi.displaySize = function () {
     window.displayBlocks.style.width = window.displayVideo.width.toString() + "px";
     window.displayBlocks.style.height = window.displayVideo.height.toString() + "px";
     window.displayBlocks.style.top = window.displayVideo.scrollTop.toString() + "px";
+    ljUi.topOffset = window.displayVideo.scrollTop.toString();
 
     var zoomW = window.displayVideo.width / window.displayVideo.videoWidth;
     var zoomH = window.displayVideo.height / window.displayVideo.videoHeight;
@@ -59,7 +62,9 @@ ljUi.displaySize = function () {
         doSize = function () {
             var nowSize = window.displayVideo.videoWidth * zoomH;
 
-            window.displayBlocks.style.left = parseFloat((window.displayVideo.width - nowSize) / 2).toString() + "px";
+            ljUi.leftOffset = parseFloat((window.displayVideo.width - nowSize) / 2);
+
+            window.displayBlocks.style.left = ljUi.leftOffset.toString() + "px";
             window.displayBlocks.style.width = nowSize.toString() + "px";
         };
     }
@@ -70,7 +75,15 @@ ljUi.displaySize = function () {
 ljUi.openModifyPanel = function () {
     window.inputSelect = ljInput.select;
     window.inputContent.value = ljInput.getBlockContent(ljInput.select);
-    window.inputColor.value = ljInput.getBlockStyle(ljInput.select, "color");
+
+    var styleModifies = ['color', 'left', 'right', 'top', 'bottom'];
+
+    for (var i = 0; i < styleModifies.length; i++)
+    {
+        var key = styleModifies[i];
+
+        window['input' + ljInput.firstBigChr(key)].value = ljInput.getBlockStyle(ljInput.select, key);
+    }
 
     window.inputPanel.style.display = "";
 };
