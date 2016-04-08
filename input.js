@@ -27,11 +27,9 @@ ljInput.getBlockId = function (id) {
 
 ljInput.setBlockStart = function (id, value) {
     var data = document.getElementById(ljInput.prefix + id);
-    var display = document.getElementById(ljDisplay.prefix + id);
     var time = document.getElementById(ljTime.prefix + id);
 
     data.setAttribute("s", value);
-    display.setAttribute("s", value);
     time.setAttribute("s", value);
 
     ljTime.afterSetBlockStart(time, value);
@@ -45,11 +43,9 @@ ljInput.getBlockStart = function (id) {
 
 ljInput.setBlockEnd = function (id, value) {
     var data = document.getElementById(ljInput.prefix + id);
-    var display = document.getElementById(ljDisplay.prefix + id);
     var time = document.getElementById(ljTime.prefix + id);
 
     data.setAttribute("e", value);
-    display.setAttribute("e", value);
     time.setAttribute("e", value);
 
     ljTime.afterSetBlockEnd(time, value);
@@ -63,18 +59,14 @@ ljInput.getBlockEnd = function (id) {
 
 ljInput.setBlockContent = function (id, value) {
     var data = document.getElementById(ljInput.prefix + id);
-    var display = document.getElementById(ljDisplay.prefix + id);
 
     data.innerText = value;
-    display.innerText = value;
 };
 
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
-    var display = document.getElementById(ljDisplay.prefix + id);
 
-    data.style[style] = value;
-    display.style[style] = value;
+    data.setAttribute(style, value);
 };
 
 ljInput.getBlockContent = function (id) {
@@ -86,7 +78,7 @@ ljInput.getBlockContent = function (id) {
 ljInput.getBlockStyle = function (id, style) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    return data.style[style];
+    return data.getAttribute(style);
 };
 
 ljInput.updateBlocks = function () {
