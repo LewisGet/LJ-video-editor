@@ -1,6 +1,7 @@
 var ljInput = {
     blocks: 0,
     prefix: "id-",
+    lastSelect: 0,
     select: 0
 };
 
@@ -8,7 +9,7 @@ ljInput.createBlocks = function () {
     var block = document.createElement("b");
     var id = ljInput.blocks;
 
-    ljInput.select = id;
+    ljInput.selectBlock(id);
     block.id = ljInput.prefix + ljInput.blocks;
 
     window.project.appendChild(block);
@@ -19,6 +20,11 @@ ljInput.createBlocks = function () {
 
     ljInput.setBlockStart(id, ljVideo.getTime());
     ljInput.setBlockEnd(id, ljVideo.getTime() + 2.5);
+};
+
+ljInput.selectBlock = function (id) {
+    ljInput.lastSelect = ljInput.select;
+    ljInput.select = id;
 };
 
 ljInput.getBlockId = function (id) {
