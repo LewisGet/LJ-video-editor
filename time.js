@@ -19,11 +19,12 @@ ljTime.afterSetBlockStart = function (dom, value) {
 };
 
 ljTime.afterSetBlockEnd = function (dom, value) {
-    dom.style.width = (value * 100).toString() + "px";
+    dom.style.width = ((value * 100) - parseInt(dom.style.left.replace("px"))).toString() + "px";
 };
 
 ljTime.videoTimeBlock = function () {
     window.controllerTimeTotal.style.width = (window.innerWidth + parseInt(ljVideo.getTotalTime() * 100)).toString() + "px";
+    window.controllerTimeTotalBar.style.width = (ljVideo.getTotalTime() * 100).toString() + "px";
 };
 
 ljTime.init = function () {
