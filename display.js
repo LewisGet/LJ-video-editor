@@ -41,6 +41,18 @@ ljDisplay.textDisplay = function (block) {
     }
 };
 
+ljDisplay.oneSecShack = function () {
+
+};
+
+ljDisplay.seBig = function () {
+
+};
+
+ljDisplay.lastBlockEndToStart = function () {
+
+};
+
 ljDisplay.init = function () {
 
 };
