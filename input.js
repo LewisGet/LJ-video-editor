@@ -66,7 +66,10 @@ ljInput.setBlockContent = function (id, value) {
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    data.setAttribute(style, value);
+    if (value)
+    {
+        data.setAttribute(style, value);
+    }
 };
 
 ljInput.getBlockContent = function (id) {
