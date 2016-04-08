@@ -31,18 +31,59 @@ ljDisplay.textDisplay = function (block) {
     // 如果現在還沒超過結束時間，而且現在播放時間超過起始時間
     if (n < e && n > s)
     {
+        var x = 1920 / 2;
+        var y = 1080 - 18 - 30;
+
+        if (ljInput.getBlockStyle(id, "oneSecShack"))
+        {
+            var xy = ljDisplay.oneSecShack(n, s, e, x, y);
+            x = xy[0];
+            y = xy[1];
+        }
+
         ctx.font = "28px 微軟正黑體";
         ctx.textAlign="center";
         ctx.strokeStyle = '#000';
         ctx.lineWidth = 8;
-        ctx.strokeText(text, 1920 / 2, 1080 - 18 - 30);
+        ctx.strokeText(text, x, y);
         ctx.fillStyle = 'white';
-        ctx.fillText(text, 1920 / 2, 1080 - 18 - 30);
+        ctx.fillText(text, x, y);
     }
 };
 
-ljDisplay.oneSecShack = function () {
+ljDisplay.oneSecShack = function (n, s, e, x, y) {
 
+    if (s < (n - 1))
+    {
+        // over 1 sec
+        return [x, y];
+    }
+
+    var diff = 5;
+    var t = parseFloat(n - s);
+
+    if (t > 0.95) { return [x - diff, y - diff]; }
+    if (t > 0.9) { return [x, y - diff]; }
+    if (t > 0.85) { return [x + diff, y + diff]; }
+    if (t > 0.8) { return [x, y + diff]; }
+    if (t > 0.75) { return [x - diff, y - diff]; }
+    if (t > 0.7) { return [x - diff, y]; }
+    if (t > 0.65) { return [x + diff, y + diff]; }
+    if (t > 0.6) { return [x + diff, y]; }
+    if (t > 0.55) { return [x - diff, y - diff]; }
+    if (t > 0.5) { return [x, y - diff]; }
+    if (t > 0.45) { return [x - diff, y + diff]; }
+    if (t > 0.4) { return [x, y + diff]; }
+    if (t > 0.35) { return [x - diff, y + diff]; }
+    if (t > 0.3) { return [x - diff, y]; }
+    if (t > 0.25) { return [x - diff, y + diff]; }
+    if (t > 0.2) { return [x + diff, y]; }
+    if (t > 0.15) { return [x - diff, y + diff]; }
+    if (t > 0.1) { return [x + diff, y + diff]; }
+    if (t > 0.05) { return [x - diff, y - diff]; }
+    if (t > 0) { return [x - diff, y + diff]; }
+
+    return [x, y];
 };
 
 ljDisplay.seBig = function () {
