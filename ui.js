@@ -97,6 +97,26 @@ ljUi.openModifyPanel = function () {
     window.inputPanel.style.display = "";
 };
 
+ljUi.setStart = function () {
+    var s = ljVideo.getTime();
+    var e = ljInput.getBlockEnd(ljInput.select);
+
+    if (s < e)
+    {
+        ljInput.setBlockStart(ljInput.select, s);
+    }
+};
+
+ljUi.setEnd = function () {
+    var s = ljInput.getBlockStart(ljInput.select);
+    var e = ljVideo.getTime();
+
+    if (s < e)
+    {
+        ljInput.setBlockEnd(ljInput.select, e);
+    }
+};
+
 ljUi.closeModifyPanel = function () {
     window.inputPanel.style.display = "none";
 };
