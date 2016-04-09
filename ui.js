@@ -4,6 +4,17 @@ var ljUi = {
     leftOffset: 0
 };
 
+var ljQuickCode = {
+    l: {
+        float: "left",
+        x: 58,
+        y: 58,
+        s: 58,
+        diff: 30,
+        sizeDiff: 20
+    }
+};
+
 ljUi.openVideo = function () {
     ljVideo.open(window.openUrl.files[0]);
     ljUi.closeOpenPanel();
@@ -125,6 +136,17 @@ ljUi.setEnd = function () {
 
 ljUi.closeModifyPanel = function () {
     window.inputPanel.style.display = "none";
+};
+
+ljUi.quickModifySetup = function (quickCode) {
+
+    if (quickCode[0] == "l")
+    {
+        window.inputX.value = ljQuickCode.l.x + (parseInt(quickCode[1]) * ljQuickCode.l.diff);
+        window.inputY.value = (ljQuickCode.l.y + (parseInt(quickCode[1]) * ljQuickCode.l.diff)) * -1;
+        window.inputFloat.value = ljQuickCode.l.float;
+        window.inputSize.value = (ljQuickCode.l.s + (parseInt(quickCode[1]) * ljQuickCode.l.sizeDiff)).toString() + "px";
+    }
 };
 
 ljUi.updateBlocks = function () {

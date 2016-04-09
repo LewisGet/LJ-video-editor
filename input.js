@@ -10,6 +10,8 @@ var ljDefaultStyleValue = {
     Color: "#fff",
     StrokeColor: "#000",
     Float: "center",
+    fullX: 1920,
+    fullY: 1080,
     X: 1920 / 2,
     Y: 1080 - 58 - 58
 };
@@ -91,6 +93,16 @@ ljInput.setBlockStyle = function (id, style, value) {
 
     if (value && ljDefaultStyleValue[style] != value)
     {
+        if (style.toLocaleString() == "x" && parseInt(value) < 0)
+        {
+            value = ljDefaultStyleValue.fullX + parseInt(value);
+        }
+
+        if (style.toLocaleString() == "y" && parseInt(value) < 0)
+        {
+            value = ljDefaultStyleValue.fullY + parseInt(value);
+        }
+
         data.setAttribute("data-" + style.toLowerCase(), value);
     }
 };

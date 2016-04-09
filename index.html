@@ -116,6 +116,17 @@
         <button onclick="ljUi.updateBlocks()" class="btn btn-default">Submit</button>
     </div>
     <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2">
+                <button onclick="ljUi.quickModifySetup(window.inputQuickCode.value)" class="btn btn-default">Quick Update</button>
+            </div>
+            <div class="col-xs-8">
+                <label for="inputQuickCode">Quick Code</label>
+                <input type="text" class="form-control" id="inputQuickCode">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="inputContent">Content</label>
         <input type="text" class="form-control" id="inputContent" placeholder="content">
     </div>
