@@ -5,6 +5,15 @@ var ljInput = {
     select: 0
 };
 
+var ljDefaultStyleValue = {
+    Size: "88px",
+    Color: "#fff",
+    StrokeColor: "#000",
+    Float: "center",
+    X: 1920 / 2,
+    Y: 1080 - 58 - 58
+};
+
 ljInput.createBlocks = function () {
     var block = document.createElement("b");
     var id = ljInput.blocks;
@@ -72,7 +81,7 @@ ljInput.setBlockContent = function (id, value) {
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    if (value)
+    if (value && (! ljDefaultStyleValue[style] == value))
     {
         data.setAttribute(style, value);
     }
@@ -96,16 +105,7 @@ ljInput.getDomStyle = function (dom, style) {
         return returnValue;
     }
 
-    var defaultValue = {
-        Size: "88px",
-        Color: "#fff",
-        StrokeColor: "#000",
-        Float: "center",
-        X: 1920 / 2,
-        Y: 1080 - 58 - 58
-    };
-
-    return defaultValue[style];
+    return ljDefaultStyleValue[style];
 };
 
 ljInput.getBlockStyle = function (id, style) {
