@@ -53,7 +53,11 @@ ljInput.setBlockStart = function (id, value) {
 ljInput.getBlockStart = function (id) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    return data.getAttribute("s");
+    return ljInput.getDomStart(data);
+};
+
+ljInput.getDomStart = function (dom) {
+    return dom.getAttribute("s");
 };
 
 ljInput.setBlockEnd = function (id, value) {
@@ -69,7 +73,11 @@ ljInput.setBlockEnd = function (id, value) {
 ljInput.getBlockEnd = function (id) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    return data.getAttribute("e");
+    return ljInput.getDomEnd(data);
+};
+
+ljInput.getDomEnd = function (dom) {
+    return dom.getAttribute("e");
 };
 
 ljInput.setBlockContent = function (id, value) {

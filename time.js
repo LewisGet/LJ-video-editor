@@ -16,6 +16,8 @@ ljTime.createBlocks = function (id) {
 
 ljTime.afterSetBlockStart = function (dom, value) {
     dom.style.left = (value * 100).toString() + "px";
+
+    ljTime.afterSetBlockEnd(dom, ljInput.getDomEnd(dom));
 };
 
 ljTime.afterSetBlockEnd = function (dom, value) {
