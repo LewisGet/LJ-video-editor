@@ -117,6 +117,20 @@ ljSrtInput.srtToObject = function (srt) {
     return createObjects;
 };
 
+ljSrtInput.createObjects = function (objects) {
+    for (var i = 0; i < objects.length; i++)
+    {
+        var object = objects[i];
+
+        ljInput.createBlocks();
+        ljInput.setBlockContent(ljInput.select, object.content);
+        ljInput.setBlockStart(ljInput.select, object.s);
+        ljInput.setBlockEnd(ljInput.select, object.e);
+    }
+};
+
 ljSrtInput.init = function (srt) {
-    console.log(ljSrtInput.srtToObject(srt));
+    var objects = ljSrtInput.srtToObject(srt);
+
+    ljSrtInput.createObjects(objects);
 };
