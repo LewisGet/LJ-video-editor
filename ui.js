@@ -89,13 +89,15 @@ ljUi.openModifyPanel = function () {
     window.inputSelect = ljInput.select;
     window.inputContent.value = ljInput.getBlockContent(ljInput.select);
 
-    var styleModifies = ['color', 'left', 'right', 'top', 'bottom'];
+    var styleModifies = ljInput.getAllInput();
 
     for (var i = 0; i < styleModifies.length; i++)
     {
         var key = styleModifies[i];
 
-        window['input' + ljInput.firstBigChr(key)].value = ljInput.getBlockStyle(ljInput.select, key);
+        if (key == "Content") { continue; }
+
+        window['input' + key].value = ljInput.getBlockStyle(ljInput.select, key);
     }
 
     window.inputPanel.style.display = "";

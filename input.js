@@ -78,28 +78,66 @@ ljInput.setBlockStyle = function (id, style, value) {
     }
 };
 
+ljInput.getDomContent = function (dom) {
+    return dom.innerText;
+};
+
 ljInput.getBlockContent = function (id) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    return data.innerText;
+    return ljInput.getDomContent(data);
+};
+
+ljInput.getDomStyle = function (dom, style) {
+    var returnValue = dom.getAttribute(style);
+
+    if (returnValue)
+    {
+        return returnValue;
+    }
+
+    var defaultValue = {
+        Size: "88px",
+        Color: "#fff",
+        StrokeColor: "#000",
+        Float: "center",
+        X: 1920 / 2,
+        Y: 1080 - 58 - 58
+    };
+
+    return defaultValue[style];
 };
 
 ljInput.getBlockStyle = function (id, style) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    return data.getAttribute(style);
+    return ljInput.getDomStyle(data, style);
+};
+
+ljInput.getAllInput = function () {
+    var inputs = window.inputPanel.getElementsByTagName("input");
+    var names = [];
+
+    for (var i = 0; i < inputs.length; i++)
+    {
+        names.push(inputs[i].id.replace("input", ""));
+    }
+
+    return names;
 };
 
 ljInput.updateBlocks = function () {
     ljInput.setBlockContent(ljInput.select, window.inputContent.value);
 
-    var styleModifies = ['color', 'left', 'right', 'top', 'bottom'];
+    var styleModifies = ljInput.getAllInput();
 
     for (var i = 0; i < styleModifies.length; i++)
     {
         var key = styleModifies[i];
 
-        ljInput.setBlockStyle(ljInput.select, key, window['input' + ljInput.firstBigChr(key)].value);
+        if (key == "Content") { continue; }
+
+        ljInput.setBlockStyle(ljInput.select, key, window['input' + key].value);
     }
 };
 

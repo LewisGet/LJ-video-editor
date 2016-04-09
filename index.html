@@ -119,25 +119,39 @@
         <label for="inputContent">Content</label>
         <input type="text" class="form-control" id="inputContent" placeholder="content">
     </div>
-    <div class="form-group">
-        <label for="inputColor">Color</label>
-        <input type="text" class="form-control" id="inputColor" placeholder="color">
-    </div>
-    <div class="form-group">
-        <label for="inputTop">Top</label>
-        <input type="text" class="form-control" id="inputTop">
-    </div>
-    <div class="form-group">
-        <label for="inputLeft">Left</label>
-        <input type="text" class="form-control" id="inputLeft">
-    </div>
-    <div class="form-group">
-        <label for="inputRight">Right</label>
-        <input type="text" class="form-control" id="inputRight">
-    </div>
-    <div class="form-group">
-        <label for="inputBottom">Bottom</label>
-        <input type="text" class="form-control" id="inputBottom">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="inputSize">Size</label>
+                <input type="text" class="form-control" id="inputSize">
+            </div>
+            <div class="form-group">
+                <label for="inputColor">Color</label>
+                <input type="text" class="form-control" id="inputColor">
+            </div>
+            <div class="form-group">
+                <label for="inputStrokeColor">StrokeColor</label>
+                <input type="text" class="form-control" id="inputStrokeColor">
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="inputFloat">Float</label>
+                <select class="form-control" id="inputFloat">
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="center" selected>center</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputX">x</label>
+                <input type="text" class="form-control" id="inputX">
+            </div>
+            <div class="form-group">
+                <label for="inputY">y</label>
+                <input type="text" class="form-control" id="inputY">
+            </div>
+        </div>
     </div>
 </div>
 <!-- 顯示 -->

@@ -31,8 +31,8 @@ ljDisplay.textDisplay = function (block) {
     // 如果現在還沒超過結束時間，而且現在播放時間超過起始時間
     if (n < e && n > s)
     {
-        var x = 1920 / 2;
-        var y = 1080 - 18 - 30;
+        var x = ljInput.getDomStyle(block, "X");
+        var y = ljInput.getDomStyle(block, "Y");
 
         if (ljInput.getBlockStyle(id, "oneSecShack"))
         {
@@ -41,12 +41,17 @@ ljDisplay.textDisplay = function (block) {
             y = xy[1];
         }
 
-        ctx.font = "28px 微軟正黑體";
-        ctx.textAlign="center";
-        ctx.strokeStyle = '#000';
+        var fontSize = ljInput.getDomStyle(block, "Size");
+        var float = ljInput.getDomStyle(block, "Float");
+        var color = ljInput.getDomStyle(block, "Color");
+        var strokeColor = ljInput.getDomStyle(block, "StrokeColor");
+
+        ctx.font = fontSize + " 微軟正黑體";
+        ctx.textAlign = float;
+        ctx.strokeStyle = strokeColor;
         ctx.lineWidth = 8;
         ctx.strokeText(text, x, y);
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = color;
         ctx.fillText(text, x, y);
     }
 };
