@@ -89,9 +89,9 @@ ljInput.setBlockContent = function (id, value) {
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    if (value && (! ljDefaultStyleValue[style] == value))
+    if (value && ljDefaultStyleValue[style] != value)
     {
-        data.setAttribute(style, value);
+        data.setAttribute("data-" + style.toLowerCase(), value);
     }
 };
 
@@ -106,7 +106,7 @@ ljInput.getBlockContent = function (id) {
 };
 
 ljInput.getDomStyle = function (dom, style) {
-    var returnValue = dom.getAttribute(style);
+    var returnValue = dom.getAttribute("data-" + style.toLowerCase());
 
     if (returnValue)
     {
@@ -124,11 +124,22 @@ ljInput.getBlockStyle = function (id, style) {
 
 ljInput.getAllInput = function () {
     var inputs = window.inputPanel.getElementsByTagName("input");
+    var selects = window.inputPanel.getElementsByTagName("select");
     var names = [];
 
     for (var i = 0; i < inputs.length; i++)
     {
+        if (inputs[i].id == "inputQuickCode")
+        {
+            continue;
+        }
+
         names.push(inputs[i].id.replace("input", ""));
+    }
+
+    for (var i = 0; i < selects.length; i++)
+    {
+        names.push(selects[i].id.replace("input", ""));
     }
 
     return names;
@@ -145,7 +156,7 @@ ljInput.updateBlocks = function () {
 
         if (key == "Content") { continue; }
 
-        ljInput.setBlockStyle(ljInput.select, key, window['input' + key].value);
+        ljInput.setBlockStyle(ljInput.select, key.toLowerCase(), window['input' + key].value);
     }
 };
 
