@@ -12,6 +12,7 @@
     <script src="./display.js" type="text/javascript"></script>
     <script src="./ui.js" type="text/javascript"></script>
     <script src="./main.js" type="text/javascript"></script>
+    <script src="./srtInput.js" type="text/javascript"></script>
     <style>
         html, body
         {
@@ -61,6 +62,19 @@
         }
 
         #inputPanel
+        {
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+
+            background-color: #fff;
+        }
+
+        #srtPanel
         {
             position: fixed;
             z-index: 3;
@@ -143,6 +157,7 @@
     <span onclick="ljUi.openModifyPanel()" class="glyphicon glyphicon-pencil"><!-- 新增字幕 --></span>
     <span onclick="ljUi.setStart()" class="glyphicon glyphicon-upload"><!-- 設定開始時間 --></span>
     <span onclick="ljUi.setEnd()" class="glyphicon glyphicon-download"><!-- 設定結束時間 --></span>
+    <span onclick="ljUi.openSrtPanel()" class="glyphicon glyphicon-book"><!-- srt input --></span>
 
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
         <!-- 總影片時間 -->
@@ -155,6 +170,12 @@
     <div>
 
     </div>
+</div>
+<div id="srtPanel">
+    <h3>Srt input</h3>
+    <button onclick="ljUi.closeSrtPanel()" class="btn btn-default">x</button>
+    <button onclick="ljUi.updateProject()" class="btn btn-default">Submit</button>
+    <textarea id="srtInput"></textarea>
 </div>
 <!-- 輸入 -->
 <script>

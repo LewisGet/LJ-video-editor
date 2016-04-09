@@ -131,6 +131,20 @@ ljUi.updateBlocks = function () {
     ljUi.closeModifyPanel();
 };
 
+ljUi.openSrtPanel = function () {
+    window.srtPanel.style.display = "";
+};
+
+ljUi.closeSrtPanel = function () {
+    window.srtPanel.style.display = "none";
+};
+
+ljUi.updateProject = function () {
+    ljSrtInput.init(window.srtInput.value);
+
+    ljUi.closeSrtPanel();
+};
+
 ljUi.createBlocks = function () {
     ljInput.createBlocks();
 
@@ -139,4 +153,5 @@ ljUi.createBlocks = function () {
 
 ljUi.init = function () {
     ljUi.closeModifyPanel();
+    ljUi.closeSrtPanel();
 };
