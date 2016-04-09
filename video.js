@@ -50,6 +50,7 @@ ljVideo.afterVideoInit = function () {
         return false;
     }
 
+    ljUi.initOnTimeUpdateEvent();
     ljUi.displaySize();
     ljUi.controllerTimeSize();
     ljTime.init();

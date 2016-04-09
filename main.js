@@ -1,5 +1,5 @@
 var ljVideoEditor = {
-
+    fps: 30
 };
 
 ljVideoEditor.flushTime = function () {
@@ -7,6 +7,13 @@ ljVideoEditor.flushTime = function () {
 
     ljDisplay.flushTime(time);
     ljUi.flushTime(time);
+};
+
+ljVideoEditor.onTimeUpdate = function () {
+    if (ljVideo.isPlaying())
+    {
+        ljVideoEditor.flushTime();
+    }
 };
 
 ljVideoEditor.init = function () {

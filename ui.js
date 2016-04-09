@@ -11,6 +11,10 @@ ljUi.openVideo = function () {
     ljVideo.afterVideoInit();
 };
 
+ljUi.initOnTimeUpdateEvent = function () {
+    setInterval("ljVideoEditor.onTimeUpdate()", 1000 / ljVideoEditor.fps);
+};
+
 ljUi.closeOpenPanel = function () {
     window.openPanel.style.display = "none";
 };
