@@ -41,6 +41,13 @@ ljDisplay.textDisplay = function (block) {
             y = xy[1];
         }
 
+        var missWord = ljInput.getDomStyle(block, "missWord");
+
+        if (missWord !== "" || missWord !== undefined)
+        {
+            text = ljDisplay.missWord(n, s, missWord, text);
+        }
+
         var fontSize = ljInput.getDomStyle(block, "Size");
         var float = ljInput.getDomStyle(block, "Float");
         var color = ljInput.getDomStyle(block, "Color");
@@ -89,6 +96,42 @@ ljDisplay.oneSecShack = function (n, s, e, x, y) {
     if (t > 0) { return [x - diff, y + diff]; }
 
     return [x, y];
+};
+
+ljDisplay.missWord = function (n, s, v, t) {
+    if (v == undefined)
+    {
+        return t;
+    }
+
+    var vs = v.split(",");
+    var missTime = 888888;
+    var miss = 0;
+
+    for (var i = 0; i < vs.length; i++)
+    {
+        var value = vs[i].split(":");
+        var thisTime = value[0];
+        var thisMiss = value[1];
+
+        // 如果已經進入特效時間
+        if ((n - s) < thisTime)
+        {
+            // 如果這次是比較後面的少字特效
+            if (thisTime < missTime)
+            {
+                missTime = thisTime;
+                miss = thisMiss;
+            }
+        }
+    }
+
+    if (miss == 0)
+    {
+        return t;
+    }
+
+    return t.slice(0, (miss * -1));
 };
 
 ljDisplay.seBig = function () {

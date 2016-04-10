@@ -127,7 +127,12 @@ ljUi.openModifyPanel = function () {
 
         if (key == "Content") { continue; }
 
-        window['input' + key].value = ljInput.getBlockStyle(ljInput.select, key);
+        var value = ljInput.getBlockStyle(ljInput.select, key);
+
+        if (value !== undefined)
+        {
+            window['input' + key].value = value;
+        }
     }
 
     window.inputPanel.style.display = "";

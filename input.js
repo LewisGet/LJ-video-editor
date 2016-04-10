@@ -91,7 +91,7 @@ ljInput.setBlockContent = function (id, value) {
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    if (value !== undefined && value !== "" && ljDefaultStyleValue[style] != value)
+    if (value !== undefined && ljDefaultStyleValue[style] != value)
     {
         if (style.toLocaleString() == "x" && parseInt(value) < 0)
         {
@@ -104,6 +104,12 @@ ljInput.setBlockStyle = function (id, style, value) {
         }
 
         data.setAttribute("data-" + style.toLowerCase(), value);
+
+
+        if (value == "")
+        {
+            data.removeAttribute("data-" + style.toLowerCase());
+        }
     }
 };
 
