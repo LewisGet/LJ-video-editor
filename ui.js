@@ -212,6 +212,17 @@ ljUi.amButtonClick = function (button) {
     ljUi.amButtonDisplay(button);
 };
 
+ljUi.nowTimeToMissInput = function () {
+    var pex = "";
+
+    if (window.inputMissWord.value)
+    {
+        pex = ",";
+    }
+
+    window.inputMissWord.value += pex + (ljVideo.getTime() - ljInput.getBlockStart(ljInput.select)).toString() + ":";
+};
+
 ljUi.closeModifyPanel = function () {
     window.inputPanel.style.display = "none";
 };
