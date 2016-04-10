@@ -178,11 +178,11 @@
 </div>
 <!-- 選擇與控制 -->
 <div id="controllerPanel">
-    <span onclick="ljUi.createBlocks()" class="glyphicon glyphicon-font"><!-- 新增字幕 --></span>
-    <span onclick="ljUi.openModifyPanel()" class="glyphicon glyphicon-pencil"><!-- 新增字幕 --></span>
-    <span onclick="ljUi.setStart()" class="glyphicon glyphicon-upload"><!-- 設定開始時間 --></span>
-    <span onclick="ljUi.setEnd()" class="glyphicon glyphicon-download"><!-- 設定結束時間 --></span>
-    <span onclick="ljUi.openSrtPanel()" class="glyphicon glyphicon-book"><!-- srt input --></span>
+    <button onclick="ljUi.createBlocks()" class="btn btn-default"><span class="glyphicon glyphicon-font"></span>新增</button>
+    <button onclick="ljUi.openModifyPanel()" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>修改</button>
+    <button onclick="ljUi.setStart()" class="btn btn-default"><span class="glyphicon glyphicon-upload"></span>設定開始</button>
+    <button onclick="ljUi.setEnd()" class="btn btn-default"><span class="glyphicon glyphicon-download"></span>設定結束</button>
+    <button onclick="ljUi.openSrtPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取 srt</button>
 
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
         <!-- 總影片時間 -->
