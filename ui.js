@@ -112,6 +112,13 @@ ljUi.openModifyPanel = function () {
     window.inputSelect = ljInput.select;
     window.inputContent.value = ljInput.getBlockContent(ljInput.select);
 
+    var buttons = window.inputPanel.getElementsByClassName("amButton");
+
+    for (var i = 0; i < buttons.length; i++)
+    {
+        ljUi.amButtonDisplay(buttons[i]);
+    }
+
     var styleModifies = ljInput.getAllInput();
 
     for (var i = 0; i < styleModifies.length; i++)
@@ -164,6 +171,40 @@ ljUi.setSameWithLastEnd = function () {
     var e = ljInput.getBlockEnd(ljInput.lastSelect);
 
     ljUi.setEnd(e);
+};
+
+ljUi.getAmButtonConfig = function (dom) {
+    return dom.getAttribute("data-am");
+};
+
+ljUi.amButtonDisplay = function (dom) {
+    var status = ljInput.getBlockStyle(ljInput.select, ljUi.getAmButtonConfig(dom));
+
+    if (parseInt(status) == 1)
+    {
+        dom.style.color = "#fff";
+        dom.style.background = "#337ab7";
+    }
+    else
+    {
+        dom.style.color = "#000";
+        dom.style.background = "";
+    }
+};
+
+ljUi.amButtonClick = function (button) {
+    var config = ljUi.getAmButtonConfig(button);
+
+    if (1 == parseInt(ljInput.getBlockStyle(ljInput.select,config)))
+    {
+        ljInput.setBlockStyle(ljInput.select, config, 0);
+    }
+    else
+    {
+        ljInput.setBlockStyle(ljInput.select, config, 1);
+    }
+
+    ljUi.amButtonDisplay(button);
 };
 
 ljUi.closeModifyPanel = function () {

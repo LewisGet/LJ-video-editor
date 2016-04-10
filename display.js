@@ -34,7 +34,7 @@ ljDisplay.textDisplay = function (block) {
         var x = ljInput.getDomStyle(block, "X");
         var y = ljInput.getDomStyle(block, "Y");
 
-        if (ljInput.getBlockStyle(id, "oneSecShack"))
+        if (ljInput.getBlockStyle(id, "oneSecShack") == 1)
         {
             var xy = ljDisplay.oneSecShack(n, s, e, x, y);
             x = xy[0];

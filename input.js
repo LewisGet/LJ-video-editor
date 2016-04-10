@@ -91,7 +91,7 @@ ljInput.setBlockContent = function (id, value) {
 ljInput.setBlockStyle = function (id, style, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
-    if (value && ljDefaultStyleValue[style] != value)
+    if (value !== undefined && value !== "" && ljDefaultStyleValue[style] != value)
     {
         if (style.toLocaleString() == "x" && parseInt(value) < 0)
         {
