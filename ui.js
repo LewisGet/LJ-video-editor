@@ -126,8 +126,12 @@ ljUi.openModifyPanel = function () {
     window.inputPanel.style.display = "";
 };
 
-ljUi.setStart = function () {
-    var s = ljVideo.getTime();
+ljUi.setStart = function (s) {
+    if (s == undefined)
+    {
+        s = ljVideo.getTime();
+    }
+
     var e = ljInput.getBlockEnd(ljInput.select);
 
     if (s < e)
@@ -136,14 +140,30 @@ ljUi.setStart = function () {
     }
 };
 
-ljUi.setEnd = function () {
+ljUi.setEnd = function (e) {
+    if (e == undefined)
+    {
+        e = ljVideo.getTime();
+    }
+
     var s = ljInput.getBlockStart(ljInput.select);
-    var e = ljVideo.getTime();
 
     if (s < e)
     {
         ljInput.setBlockEnd(ljInput.select, e);
     }
+};
+
+ljUi.setSameWithLastStart = function () {
+    var s = ljInput.getBlockStart(ljInput.lastSelect);
+
+    ljUi.setStart(s);
+};
+
+ljUi.setSameWithLastEnd = function () {
+    var e = ljInput.getBlockEnd(ljInput.lastSelect);
+
+    ljUi.setEnd(e);
 };
 
 ljUi.closeModifyPanel = function () {
