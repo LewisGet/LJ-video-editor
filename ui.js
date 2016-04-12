@@ -263,6 +263,12 @@ ljUi.getLastSave = function () {
     window.loader.value = ljSave.getLastSave();
 };
 
+ljUi.downloadLastSave = function () {
+    ljSave.save();
+
+    ljSave.downloadLastSave();
+};
+
 ljUi.openSrtPanel = function () {
     window.srtPanel.style.display = "";
 };

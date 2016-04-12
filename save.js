@@ -39,3 +39,19 @@ ljSave.getLastSave = function () {
 
     return window.localStorage.getItem(ljSave.storagePrefix + ljSave.storageIndex.toString());
 };
+
+ljSave.downloadLastSave = function () {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+
+    var blob = new Blob([ljSave.getLastSave()], {type: "plain/text"});
+    var url = window.URL.createObjectURL(blob);
+
+    a.href = url;
+    a.download = "lj-editor-save.txt";
+    a.click();
+    window.URL.revokeObjectURL(url);
+
+    a.parentElement().removeChild(a);
+};
