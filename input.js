@@ -13,7 +13,7 @@ var ljDefaultStyleValue = {
     fullX: 1920,
     fullY: 1080,
     X: 1920 / 2,
-    Y: 1080 - 58 - 58
+    Y: 1080 - 130
 };
 
 ljInput.createBlocks = function () {
