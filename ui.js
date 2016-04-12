@@ -10,6 +10,7 @@ var ljQuickCode = {
         x: 58,
         y: 58,
         s: 58,
+        c: "#ff8040",
         diff: 30,
         sizeDiff: 20
     },
@@ -18,6 +19,7 @@ var ljQuickCode = {
         x: 58,
         y: 58,
         s: 58,
+        c: "#0080ff",
         diff: 30,
         sizeDiff: 20
     },
@@ -233,6 +235,7 @@ ljUi.quickModifySetup = function (quickCode) {
     {
         window.inputX.value = ljQuickCode.l.x + (parseInt(quickCode[1]) * ljQuickCode.l.diff);
         window.inputY.value = (ljQuickCode.l.y + (parseInt(quickCode[1]) * ljQuickCode.l.diff)) * -1;
+        window.inputColor.value = ljQuickCode.l.c;
         window.inputFloat.value = ljQuickCode.l.float;
         window.inputSize.value = (ljQuickCode.l.s + (parseInt(quickCode[1]) * ljQuickCode.l.sizeDiff)).toString() + "px";
     }
@@ -241,6 +244,7 @@ ljUi.quickModifySetup = function (quickCode) {
     {
         window.inputX.value = (ljQuickCode.r.x + (parseInt(quickCode[1]) * ljQuickCode.r.diff)) * -1;
         window.inputY.value = (ljQuickCode.r.y + (parseInt(quickCode[1]) * ljQuickCode.r.diff)) * -1;
+        window.inputColor.value = ljQuickCode.r.c;
         window.inputFloat.value = ljQuickCode.r.float;
         window.inputSize.value = (ljQuickCode.r.s + (parseInt(quickCode[1]) * ljQuickCode.r.sizeDiff)).toString() + "px";
     }
@@ -248,6 +252,20 @@ ljUi.quickModifySetup = function (quickCode) {
     if (quickCode[0] == "m")
     {
         window.inputY.value = (ljQuickCode.m.y + (parseInt(quickCode[1]) * ljQuickCode.m.diff)) * -1;
+
+        if (quickCode[2])
+        {
+            var color = parseInt(quickCode[2]);
+
+            if (color == 1)
+            {
+                window.inputColor.value = ljQuickCode.l.c;
+            }
+            else if (color == 2)
+            {
+                window.inputColor.value = ljQuickCode.r.c;
+            }
+        }
     }
 };
 
