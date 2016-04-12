@@ -74,6 +74,9 @@ ljDisplay.oneSecShack = function (n, s, e, x, y) {
     var diff = 5;
     var t = parseFloat(n - s);
 
+    x = parseInt(x);
+    y = parseInt(y);
+
     if (t > 0.95) { return [x - diff, y - diff]; }
     if (t > 0.9) { return [x, y - diff]; }
     if (t > 0.85) { return [x + diff, y + diff]; }
