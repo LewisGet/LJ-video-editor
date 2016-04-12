@@ -98,7 +98,10 @@
 <!-- 開起影片介面 -->
 <div id="openPanel">
     <p>
-        open video <input id="openUrl" type="file" /> <button onclick="ljUi.openVideo()"> open </button> <button onclick="ljUi.openVideo(); ljLoad.load();"> open and load </button>
+        open video <input id="openUrl" type="file" />
+        <button onclick="ljUi.openVideo()"> open </button>
+        <button onclick="ljUi.openVideo(); ljLoad.load();"> open and load </button>
+        <button onclick="ljUi.getLastSave()">get last auto save</button>
     </p>
     <textarea id="loader">
 

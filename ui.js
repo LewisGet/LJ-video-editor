@@ -255,6 +255,12 @@ ljUi.updateBlocks = function () {
     ljInput.updateBlocks();
 
     ljUi.closeModifyPanel();
+
+    ljSave.save();
+};
+
+ljUi.getLastSave = function () {
+    window.loader.value = ljSave.getLastSave();
 };
 
 ljUi.openSrtPanel = function () {
