@@ -14,6 +14,7 @@
     <script src="./main.js" type="text/javascript"></script>
     <script src="./srtInput.js" type="text/javascript"></script>
     <script src="./save.js" type="text/javascript"></script>
+    <script src="./load.js" type="text/javascript"></script>
     <style>
         html, body
         {
@@ -97,7 +98,7 @@
 <!-- 開起影片介面 -->
 <div id="openPanel">
     <p>
-        open video <input id="openUrl" type="file" /> <button onclick="ljUi.openVideo()"> open </button>
+        open video <input id="openUrl" type="file" /> <button onclick="ljUi.openVideo()"> open </button> <button onclick="ljUi.openVideo(); ljLoad.load();"> open and load </button>
     </p>
     <textarea id="loader">
 

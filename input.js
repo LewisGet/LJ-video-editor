@@ -42,6 +42,10 @@ ljInput.getBlockId = function (id) {
     return parseInt((id.split("-"))[1]);
 };
 
+ljInput.getBlock = function (id) {
+    return document.getElementById(ljInput.prefix + id);
+};
+
 ljInput.setBlockStart = function (id, value) {
     var data = document.getElementById(ljInput.prefix + id);
     var time = document.getElementById(ljTime.prefix + id);
