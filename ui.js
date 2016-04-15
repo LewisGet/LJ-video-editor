@@ -54,6 +54,10 @@ ljUi.scrolledTime = function () {
 };
 
 ljUi.flushTime = function (time) {
+    // time display block
+    window.timeDisplayPanel.innerText = time;
+
+    // time bar
     window.controllerTime.scrollLeft = parseInt(time * 100);
 };
 

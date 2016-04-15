@@ -62,6 +62,18 @@
             position: fixed;
             z-index: 2;
         }
+        
+        #timeDisplayPanel
+        {
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            
+            opacity: 0.8;
+            background-color: #000;
+            color: #fff;
+        }
 
         #inputPanel
         {
@@ -193,6 +205,10 @@
 
     </canvas>
 </div>
+
+<div id="timeDisplayPanel">
+</div>
+
 <!-- 選擇與控制 -->
 <div id="controllerPanel">
     <button onclick="ljUi.createBlocks()" class="btn btn-default"><span class="glyphicon glyphicon-font"></span>新增</button>
