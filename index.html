@@ -35,8 +35,21 @@
 
         #controllerTime
         {
+            padding-left: 50px;
             max-width: 100%;
             overflow-x: scroll;
+        }
+
+        #controllerTimeStartBar
+        {
+            position: fixed;
+            z-index: 5;
+            top: 100%;
+            bottom: 0;
+            left: 49px;
+            width: 1px;
+            min-height: 100%;
+            background-color: #b92c28;
         }
 
         #controllerTime > div
@@ -222,15 +235,13 @@
     <button onclick="ljUi.downloadLastSave()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>存檔</button>
 
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
+        <span id="controllerTimeStartBar"></span>
         <!-- 總影片時間 -->
         <!-- width = window.innerWidth + video time -->
         <div id="controllerTimeTotal"></div>
         <div id="controllerTimeTotalBar">Total</div>
         <!-- 其他區塊空置器 -->
         <!-- <div id="time-1" start="1" end="2" style="top:1; left:2; color: #000;">content</div> -->
-    </div>
-    <div>
-
     </div>
 </div>
 <div id="srtPanel">

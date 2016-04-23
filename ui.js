@@ -106,7 +106,11 @@ ljUi.displaySize = function () {
 };
 
 ljUi.controllerTimeSize = function () {
-    var h = window.innerHeight - window.controllerTime.offsetTop;
+    var timePanelStart = window.controllerTime.offsetTop;
+    var startTimeBar = document.getElementById("controllerTimeStartBar");
+    var h = window.innerHeight - timePanelStart;
+
+    startTimeBar.style.top = timePanelStart.toString() + "px";
 
     if (h > 80)
     {
