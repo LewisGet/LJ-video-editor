@@ -2,13 +2,30 @@ var ljTime = {
     prefix: "t-",
 };
 
+var ljColor = [
+    "#d609d3",
+    "#d609d3",
+    "#770dee",
+    "#7ee764",
+    "#de920c",
+    "#b9f4fe",
+    "#b52b62",
+    "#99b1a7",
+    "#a4bc2e",
+    "#a4bc2e"
+];
+
 ljTime.createBlocks = function (id) {
     var block = document.createElement("div");
 
     block.id = ljTime.prefix + id;
-    block.style.background = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+    block.style.background = ljColor[parseInt(Math.random() * 10)];
     block.onclick = function () {
-        ljInput.selectBlock(ljInput.getBlockId(this.id));
+        var id = ljInput.getBlockId(this.id);
+
+        ljUi.selectTimeBlock(id, ljInput.select, ljInput.lastSelect);
+
+        ljInput.selectBlock(id);
     };
 
     window.controllerTime.appendChild(block);

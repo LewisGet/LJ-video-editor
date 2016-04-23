@@ -17,6 +17,8 @@ var ljDefaultStyleValue = {
 };
 
 ljInput.createBlocks = function () {
+    var lastId = ljInput.select;
+    var cancelId = ljInput.lastSelect;
     var block = document.createElement("b");
     var id = ljInput.blocks;
 
@@ -31,6 +33,8 @@ ljInput.createBlocks = function () {
 
     ljInput.setBlockStart(id, ljVideo.getTime());
     ljInput.setBlockEnd(id, ljVideo.getTime() + 2.5);
+
+    ljUi.selectTimeBlock(id, lastId, cancelId);
 };
 
 ljInput.selectBlock = function (id) {

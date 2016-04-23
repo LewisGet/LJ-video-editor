@@ -36,6 +36,16 @@ ljUi.openVideo = function () {
     ljVideo.afterVideoInit();
 };
 
+ljUi.selectTimeBlock = function (selectId, lastId, cancelId) {
+    var select = document.getElementById(ljTime.prefix + selectId.toString());
+    var last   = document.getElementById(ljTime.prefix + lastId.toString());
+    var cancel = document.getElementById(ljTime.prefix + cancelId.toString());
+
+    cancel.style.border = "";
+    last.style.border   = "3px dashed #000";
+    select.style.border = "3px solid #000";
+};
+
 ljUi.initOnTimeUpdateEvent = function () {
     setInterval("ljVideoEditor.onTimeUpdate()", 1000 / ljVideoEditor.fps);
 };
