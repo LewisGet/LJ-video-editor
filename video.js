@@ -34,6 +34,12 @@ ljVideo.setTime = function (time) {
     ljVideoEditor.flushTime();
 };
 
+ljVideo.jumpTime = function (value) {
+    var time = ljVideo.getTime() + value;
+
+    ljVideo.setTime(time);
+};
+
 ljVideo.getTime = function () {
     return window.displayVideo.currentTime;
 };
