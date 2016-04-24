@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LJ Video Editor</title>
     <link type="text/css" rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
     <script src="./video.js" type="text/javascript"></script>
+    <script src="./sound.js" type="text/javascript"></script>
     <script src="./time.js" type="text/javascript"></script>
     <script src="./input.js" type="text/javascript"></script>
     <script src="./display.js" type="text/javascript"></script>
@@ -88,7 +90,7 @@
             color: #fff;
         }
 
-        #inputPanel
+        #inputPanel, #srtPanel, #soundPanel
         {
             position: fixed;
             z-index: 3;
@@ -101,17 +103,9 @@
             background-color: #fff;
         }
 
-        #srtPanel
+        #soundBarTmp
         {
-            position: fixed;
-            z-index: 3;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: auto;
-
-            background-color: #fff;
+            display: none;
         }
     </style>
 </head>
@@ -234,10 +228,13 @@
     <button onclick="ljUi.setSameWithLastEnd()" class="btn btn-default"><span class="glyphicon glyphicon-floppy-save"></span>跟隨結束</button>
     <button onclick="ljInput.selectBlock(ljInput.lastSelect)" class="btn btn-default"><span class="glyphicon glyphicon-link"></span>選取上個</button>
     <button onclick="ljUi.openSrtPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取 srt</button>
+    <button onclick="ljUi.openSoundPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取音效</button>
     <button onclick="ljUi.downloadLastSave()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>存檔</button>
 
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
         <span id="controllerTimeStartBar"></span>
+        <span id="soundBarTmp"></span>
+        <span id="soundBar"></span>
         <!-- 總影片時間 -->
         <!-- width = window.innerWidth + video time -->
         <div id="controllerTimeTotal"></div>
@@ -246,6 +243,13 @@
         <!-- <div id="time-1" start="1" end="2" style="top:1; left:2; color: #000;">content</div> -->
     </div>
 </div>
+<!-- sound -->
+<div id="soundPanel">
+    <button onclick="ljUi.closeSoundPanel()" class="btn btn-default">x</button>
+    <input id="soundPanelFile" type="file" />
+    <button onclick="ljUi.openSound()"> open </button>
+</div>
+
 <div id="srtPanel">
     <h3>Srt input</h3>
     <button onclick="ljUi.closeSrtPanel()" class="btn btn-default">x</button>

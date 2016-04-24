@@ -12,6 +12,16 @@ ljVideo.open = function (file) {
     window.displayVideo.play();
 };
 
+ljVideo.soundLoad = function (url) {
+    var wavesurfer = WaveSurfer.create({
+        container: '#soundBar',
+        waveColor: 'violet',
+        progressColor: 'purple'
+    });
+
+    wavesurfer.load(url);
+};
+
 ljVideo.stop = function () {
     window.displayVideo.pause();
 };

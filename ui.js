@@ -326,7 +326,22 @@ ljUi.createBlocks = function () {
     ljUi.openModifyPanel();
 };
 
+ljUi.openSound = function () {
+    ljSound.openSound(window.soundPanelFile.files[0]);
+
+    ljUi.closeSoundPanel();
+};
+
+ljUi.openSoundPanel = function () {
+    window.soundPanel.style.display = "";
+};
+
+ljUi.closeSoundPanel = function () {
+    window.soundPanel.style.display = "none";
+};
+
 ljUi.init = function () {
     ljUi.closeModifyPanel();
+    ljUi.closeSoundPanel();
     ljUi.closeSrtPanel();
 };
