@@ -53,10 +53,11 @@ ljDisplay.textDisplay = function (block) {
         var color = ljInput.getDomStyle(block, "Color");
         var strokeColor = ljInput.getDomStyle(block, "StrokeColor");
 
-        ctx.font = fontSize + " 微軟正黑體";
+        ctx.font = "bold " + fontSize + " 微軟正黑體";
         ctx.textAlign = float;
         ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 16;
+        ctx.lineJoin = "round";
         ctx.strokeText(text, x, y);
         ctx.fillStyle = color;
         ctx.fillText(text, x, y);
