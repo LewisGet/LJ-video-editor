@@ -248,6 +248,7 @@ ljUi.closeModifyPanel = function () {
 };
 
 ljUi.quickModifySetup = function (quickCode) {
+    quickCode = quickCode.toLowerCase();
 
     if (quickCode[0] == "l")
     {
