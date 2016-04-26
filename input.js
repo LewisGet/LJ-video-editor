@@ -6,14 +6,14 @@ var ljInput = {
 };
 
 var ljDefaultStyleValue = {
-    Size: "88px",
-    Color: "#fff",
-    StrokeColor: "#000",
-    Float: "center",
+    size: "88px",
+    color: "#fff",
+    strokeColor: "#000",
+    float: "center",
     fullX: 1920,
     fullY: 1080,
-    X: 1920 / 2,
-    Y: 1080 - 130
+    x: 1920 / 2,
+    y: 1080 - 130
 };
 
 ljInput.createBlocks = function () {
@@ -132,7 +132,9 @@ ljInput.getBlockContent = function (id) {
 };
 
 ljInput.getDomStyle = function (dom, style) {
-    var returnValue = dom.getAttribute("data-" + style.toLowerCase());
+    style = style.toLowerCase();
+
+    var returnValue = dom.getAttribute("data-" + style);
 
     if (returnValue)
     {
