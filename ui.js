@@ -24,6 +24,8 @@ var ljQuickCode = {
         sizeDiff: 20
     },
     m: {
+        float: "center",
+        x: 1920 / 2,
         y: 30,
         diff: 100
     }
@@ -270,7 +272,9 @@ ljUi.quickModifySetup = function (quickCode) {
 
     if (quickCode[0] == "m")
     {
+        window.inputX.value = ljQuickCode.m.x;
         window.inputY.value = (ljQuickCode.m.y + (parseInt(quickCode[1]) * ljQuickCode.m.diff)) * -1;
+        window.inputFloat.value = ljQuickCode.m.float;
 
         if (quickCode[2])
         {
