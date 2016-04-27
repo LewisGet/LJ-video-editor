@@ -234,6 +234,14 @@ ljUi.amButtonClick = function (button) {
     ljUi.amButtonDisplay(button);
 };
 
+ljUi.removeBlock = function () {
+    ljInput.removeBlock(ljInput.select);
+
+    ljUi.selectTimeBlock(ljInput.lastSelect, ljInput.lastSelect, ljInput.select);
+
+    ljInput.selectBlock(ljInput.lastSelect);
+};
+
 ljUi.nowTimeToMissInput = function () {
     var pex = "";
 

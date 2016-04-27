@@ -15,6 +15,10 @@ var ljColor = [
     "#a4bc2e"
 ];
 
+ljTime.getBlock = function (id) {
+    return document.getElementById(ljTime.prefix + id.toString());
+};
+
 ljTime.createBlocks = function (id) {
     var block = document.createElement("div");
 

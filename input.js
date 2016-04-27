@@ -188,6 +188,20 @@ ljInput.updateBlocks = function () {
     }
 };
 
+ljInput.removeDom = function (dom) {
+    var id = ljInput.getBlockId(dom.id);
+
+    return ljInput.removeBlock(id);
+};
+
+ljInput.removeBlock = function (id) {
+    var projectDom = ljInput.getBlock(id);
+    var timeDom    = ljTime.getBlock(id);
+
+    window.project.removeChild(projectDom);
+    window.controllerTime.removeChild(timeDom);
+};
+
 ljInput.firstBigChr = function (s) {
     return s.toUpperCase().charAt(0) + s.substring(1);
 };
