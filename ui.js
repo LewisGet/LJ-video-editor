@@ -43,9 +43,9 @@ ljUi.selectTimeBlock = function (selectId, lastId, cancelId) {
     var last   = document.getElementById(ljTime.prefix + lastId.toString());
     var cancel = document.getElementById(ljTime.prefix + cancelId.toString());
 
-    cancel.style.border = "";
-    last.style.border   = "3px dashed #000";
-    select.style.border = "3px solid #000";
+    if (cancel) cancel.style.border = "";
+    if (last)   last.style.border   = "3px dashed #000";
+    if (select) select.style.border = "3px solid #000";
 };
 
 ljUi.initOnTimeUpdateEvent = function () {
@@ -260,6 +260,7 @@ ljUi.removeBlock = function () {
     var id = ljInput.select;
 
     ljUi.selectTimeBlock(ljInput.lastSelect, ljInput.lastSelect, id);
+    ljInput.selectBlock(ljInput.lastSelect);
     ljInput.selectBlock(ljInput.lastSelect);
 
     ljInput.removeBlock(id);
