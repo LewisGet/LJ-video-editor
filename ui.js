@@ -257,11 +257,12 @@ ljUi.moveToLastEnd = function () {
 };
 
 ljUi.removeBlock = function () {
-    ljInput.removeBlock(ljInput.select);
+    var id = ljInput.select;
 
-    ljUi.selectTimeBlock(ljInput.lastSelect, ljInput.lastSelect, ljInput.select);
-
+    ljUi.selectTimeBlock(ljInput.lastSelect, ljInput.lastSelect, id);
     ljInput.selectBlock(ljInput.lastSelect);
+
+    ljInput.removeBlock(id);
 };
 
 ljUi.nowTimeToMissInput = function () {
