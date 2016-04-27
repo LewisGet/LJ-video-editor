@@ -46,6 +46,28 @@ ljLoad.preLoad = function () {
 
     document.body.appendChild(tmp);
 
+    var list = tmp;
+    var items = list.childNodes;
+    var itemsArr = [];
+    for (var i in items) {
+        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+            itemsArr.push(items[i]);
+        }
+    }
+
+    itemsArr.sort(function(a, b) {
+        a = parseFloat(ljInput.getDomStart(a));
+        b = parseFloat(ljInput.getDomStart(b));
+
+        return a == b
+            ? 0
+            : (a > b ? 1 : -1);
+    });
+
+    for (i = 0; i < itemsArr.length; ++i) {
+        list.appendChild(itemsArr[i]);
+    }
+
     return tmp;
 };
 
