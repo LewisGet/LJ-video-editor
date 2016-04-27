@@ -162,6 +162,10 @@ ljUi.openModifyPanel = function () {
     window.inputPanel.style.display = "";
 };
 
+ljUi.getLastContent = function () {
+    window.inputContent.value = ljInput.getBlockContent(ljInput.lastSelect);
+};
+
 ljUi.setStart = function (s) {
     if (s == undefined)
     {
