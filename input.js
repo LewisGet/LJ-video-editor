@@ -191,3 +191,24 @@ ljInput.updateBlocks = function () {
 ljInput.firstBigChr = function (s) {
     return s.toUpperCase().charAt(0) + s.substring(1);
 };
+
+ljInput.domTextFix = function (dom) {
+    dom.innerText = dom.innerText.replace(",", "，");
+    dom.innerText = dom.innerText.replace("!", "！");
+    dom.innerText = dom.innerText.replace("?", "？");
+
+    var lastWord = dom.innerText[dom.innerText.length - 1];
+
+    if (
+        lastWord != "？" &&
+        lastWord != "！" &&
+        lastWord != "。" &&
+        lastWord != "."  &&
+        lastWord != " "
+    )
+    {
+        dom.innerText += "！";
+    }
+
+    return dom;
+};

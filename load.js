@@ -17,6 +17,8 @@ ljLoad.load = function () {
         var data = datas[i];
         var id = ljInput.select;
 
+        data = ljInput.domTextFix(data);
+
         ljInput.setBlockContent(id, data.innerText);
         ljInput.setBlockStart(id, data.getAttribute("s"));
         ljInput.setBlockEnd(id, data.getAttribute("e"));
