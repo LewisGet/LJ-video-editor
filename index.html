@@ -103,6 +103,13 @@
             background-color: #fff;
         }
 
+        #soundBar
+        {
+            z-index: 2;
+            position: relative;
+            opacity: 0.8;
+        }
+
         #soundBarTmp
         {
             display: none;
@@ -239,12 +246,14 @@
     <button onclick="ljInput.selectBlock(ljInput.lastSelect)" class="btn btn-default"><span class="glyphicon glyphicon-link"></span>選取上個</button>
     <button onclick="ljUi.openSrtPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取 srt</button>
     <button onclick="ljUi.openSoundPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取音效</button>
+    <button onclick="ljUi.soundPanelDown()" class="btn btn-default">音效下移</button>
+    <button onclick="ljUi.soundPanelUp()" class="btn btn-default">音效上移</button>
     <button onclick="ljUi.downloadLastSave()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>存檔</button>
 
     <div id="controllerTime" onscroll="ljUi.scrolledTime()">
         <span id="controllerTimeStartBar"></span>
         <span id="soundBarTmp"></span>
-        <span id="soundBar"></span>
+        <span id="soundBar" style="top: 0;"></span>
         <!-- 總影片時間 -->
         <!-- width = window.innerWidth + video time -->
         <div id="controllerTimeTotal"></div>

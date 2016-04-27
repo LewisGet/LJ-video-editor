@@ -378,6 +378,17 @@ ljUi.openSoundPanel = function () {
     window.soundPanel.style.display = "";
 };
 
+ljUi.soundPanelDown = function () {
+    window.soundBar.style.top = (parseInt(window.soundBar.style.top) + 50).toString() + "px";
+};
+
+ljUi.soundPanelUp = function () {
+    if (parseInt(window.soundBar.style.top) != 0)
+    {
+        window.soundBar.style.top = (parseInt(window.soundBar.style.top) - 50).toString() + "px";
+    }
+};
+
 ljUi.closeSoundPanel = function () {
     window.soundPanel.style.display = "none";
 };
