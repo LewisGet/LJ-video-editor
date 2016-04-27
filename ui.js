@@ -234,6 +234,26 @@ ljUi.amButtonClick = function (button) {
     ljUi.amButtonDisplay(button);
 };
 
+ljUi.moveTo = function (time) {
+    var block = ljInput.getBlock(ljInput.select);
+
+    var s = ljInput.getDomStart(block);
+    var e = ljInput.getDomEnd(block);
+
+    var total = e - s;
+
+    ljInput.setBlockStart(ljInput.select, time);
+    ljInput.setBlockEnd(ljInput.select, time + total);
+};
+
+ljUi.moveToNow = function () {
+    ljUi.moveTo(ljVideo.getTime());
+};
+
+ljUi.moveToLastEnd = function () {
+    ljUi.moveTo(ljInput.getBlockEnd(ljInput.lastSelect));
+};
+
 ljUi.removeBlock = function () {
     ljInput.removeBlock(ljInput.select);
 
