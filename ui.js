@@ -151,10 +151,12 @@ ljUi.openModifyPanel = function () {
 
         var value = ljInput.getBlockStyle(ljInput.select, key);
 
-        if (value !== undefined)
+        if (value == undefined)
         {
-            window['input' + key].value = value;
+            value = "";
         }
+
+        window['input' + key].value = value;
     }
 
     window.inputPanel.style.display = "";
