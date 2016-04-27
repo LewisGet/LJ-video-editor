@@ -235,12 +235,14 @@ ljUi.amButtonClick = function (button) {
 };
 
 ljUi.moveTo = function (time) {
+    time = parseFloat(time);
+
     var block = ljInput.getBlock(ljInput.select);
 
     var s = ljInput.getDomStart(block);
     var e = ljInput.getDomEnd(block);
 
-    var total = e - s;
+    var total = parseFloat(e) - parseFloat(s);
 
     ljInput.setBlockStart(ljInput.select, time);
     ljInput.setBlockEnd(ljInput.select, time + total);
