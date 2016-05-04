@@ -215,6 +215,7 @@ ljInput.domTextFix = function (dom) {
     dom.innerText = dom.innerText.replace("丫", "啊");
     dom.innerText = dom.innerText.replace("幹", "看");
     dom.innerText = dom.innerText.replace("淦", "看");
+    dom.innerText = dom.innerText.replace("，！", "，");
 
     var lastWord = dom.innerText[dom.innerText.length - 1];
 
