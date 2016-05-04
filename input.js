@@ -210,6 +210,11 @@ ljInput.domTextFix = function (dom) {
     dom.innerText = dom.innerText.replace(",", "，");
     dom.innerText = dom.innerText.replace("!", "！");
     dom.innerText = dom.innerText.replace("?", "？");
+    dom.innerText = dom.innerText.replace("ㄟ", "欸");
+    dom.innerText = dom.innerText.replace("ㄚ", "啊");
+    dom.innerText = dom.innerText.replace("丫", "啊");
+    dom.innerText = dom.innerText.replace("幹", "看");
+    dom.innerText = dom.innerText.replace("淦", "看");
 
     var lastWord = dom.innerText[dom.innerText.length - 1];
 
@@ -217,6 +222,7 @@ ljInput.domTextFix = function (dom) {
         lastWord != "？" &&
         lastWord != "！" &&
         lastWord != "。" &&
+        lastWord != "，" &&
         lastWord != "."  &&
         lastWord != " "
     )
