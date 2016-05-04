@@ -399,6 +399,21 @@ ljUi.closeSoundPanel = function () {
     window.soundPanel.style.display = "none";
 };
 
+ljUi.displayToCam = function () {
+    for (var i = 0; i < document.body.children.length; i++)
+    {
+        document.body.children[i].style.display = "none";
+    }
+
+    document.body.style.background = "#00FF00";
+
+    document.body.appendChild(window.displayBlocks);
+
+    window.displayBlocks.style = {};
+
+    ljVideo.setTime(0);
+};
+
 ljUi.init = function () {
     ljUi.closeModifyPanel();
     ljUi.closeSoundPanel();
