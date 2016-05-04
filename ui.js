@@ -48,6 +48,12 @@ ljUi.selectTimeBlock = function (selectId, lastId, cancelId) {
     if (select) select.style.border = "3px solid #000";
 };
 
+ljUi.selectLastBlock = function () {
+    var dom = document.getElementById(ljTime.prefix + ljInput.lastSelect.toString());
+
+    dom.click();
+};
+
 ljUi.initOnTimeUpdateEvent = function () {
     setInterval("ljVideoEditor.onTimeUpdate()", 1000 / ljVideoEditor.fps);
 };
