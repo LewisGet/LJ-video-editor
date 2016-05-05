@@ -414,6 +414,10 @@ ljUi.displayToCam = function () {
     ljVideo.setTime(0);
 };
 
+ljUi.soundClick = function (e) {
+    window.controllerTime.scrollLeft = e.offsetX;
+};
+
 ljUi.init = function () {
     ljUi.closeModifyPanel();
     ljUi.closeSoundPanel();

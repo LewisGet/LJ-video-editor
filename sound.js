@@ -18,6 +18,8 @@ ljSound.openSound = function (file) {
         // clear cache
         ljSound.clearCache();
 
+        canvas.onclick = ljUi.soundClick;
+
         window.soundBar.appendChild(canvas);
     });
 };
