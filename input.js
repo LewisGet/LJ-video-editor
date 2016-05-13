@@ -207,6 +207,9 @@ ljInput.firstBigChr = function (s) {
 };
 
 ljInput.domTextFix = function (dom) {
+
+    dom.innerText = pangu.spacing(dom.innerText);
+
     dom.innerText = dom.innerText.replace(",", "，");
     dom.innerText = dom.innerText.replace("!", "！");
     dom.innerText = dom.innerText.replace("?", "？");
@@ -216,6 +219,35 @@ ljInput.domTextFix = function (dom) {
     dom.innerText = dom.innerText.replace("幹", "看");
     dom.innerText = dom.innerText.replace("淦", "看");
     dom.innerText = dom.innerText.replace("，！", "，");
+    dom.innerText = dom.innerText.replace("！！！", "！");
+    dom.innerText = dom.innerText.replace("！！", "！");
+    dom.innerText = dom.innerText.replace("？！", "！");
+    dom.innerText = dom.innerText.replace("！？", "！");
+    dom.innerText = dom.innerText.replace(" ，", "，");
+    dom.innerText = dom.innerText.replace("， ", "，");
+    dom.innerText = dom.innerText.replace(" ！", "！");
+    dom.innerText = dom.innerText.replace("！ ", "！");
+    dom.innerText = dom.innerText.replace(" ？", "？");
+    dom.innerText = dom.innerText.replace("？ ", "？");
+
+    // 挑出不該出現在文字中的符號
+    var textTmp = dom.innerText.split("");
+
+    for (var i = 0; i < (textTmp.length - 1); i++)
+    {
+        if (
+            textTmp[i] == "！" ||
+            textTmp[i] == "？"
+        )
+        {
+            textTmp[i] = "，";
+        }
+    }
+
+    dom.innerText = textTmp.join("");
+
+    dom.innerText = dom.innerText.replace("，，，", "，");
+    dom.innerText = dom.innerText.replace("，，", "，");
 
     var lastWord = dom.innerText[dom.innerText.length - 1];
 
