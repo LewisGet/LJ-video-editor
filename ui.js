@@ -414,6 +414,15 @@ ljUi.displayToCam = function () {
     ljVideo.setTime(0);
 };
 
+ljUi.toDefault = function (quickCode) {
+    ljUi.openModifyPanel();
+    ljUi.quickModifySetup(quickCode);
+
+    window.inputSize.value = "88px";
+
+    ljUi.updateBlocks();
+};
+
 ljUi.soundClick = function (e) {
     window.controllerTime.scrollLeft = e.offsetX;
 };
