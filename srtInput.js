@@ -126,6 +126,7 @@ ljSrtInput.createObjects = function (objects) {
         ljInput.setBlockContent(ljInput.select, object.content);
         ljInput.setBlockStart(ljInput.select, object.s);
         ljInput.setBlockEnd(ljInput.select, object.e);
+        ljUi.toDefault(window.srtQuickCode.value);
     }
 };
 
