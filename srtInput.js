@@ -25,20 +25,9 @@ ljSrtInput.isLineIndex = function (datas, key) {
 ljSrtInput.stringToSec = function (string) {
     var t = string.split(':');
 
-    var floatTime = t[2].split(",");
-    var sec = floatTime[0];
-    var floatString = "0";
+    var floatTime = parseFloat((t[2]).toString().replace(",", "."));
 
-    if (floatTime[1] != "0")
-    {
-        // javascript float math bug
-        floatTime = (parseInt(floatTime[1]) * 0.033333).toString();
-
-        floatString = (floatTime.split("."))[1];
-    }
-
-    t = (parseInt(t[0]) * 60 * 60) + (parseInt(t[1]) * 60) + parseInt(sec);
-    t = t + "." + floatString;
+    t = (parseInt(t[0]) * 60 * 60) + (parseInt(t[1]) * 60) + floatTime;
 
     return t;
 };
