@@ -38,14 +38,24 @@ ljUi.openVideo = function () {
     ljVideo.afterVideoInit();
 };
 
-ljUi.selectTimeBlock = function (selectId, lastId, cancelId) {
-    var select = document.getElementById(ljTime.prefix + selectId.toString());
-    var last   = document.getElementById(ljTime.prefix + lastId.toString());
-    var cancel = document.getElementById(ljTime.prefix + cancelId.toString());
+ljUi.selectTimeBlock  = function (selectId) {
+    ljUi.selectTimeBlockDefaultMod(selectId);
+};
 
-    if (cancel) cancel.style.border = "";
-    if (last)   last.style.border   = "3px dashed #000";
-    if (select) select.style.border = "3px solid #000";
+ljUi.selectTimeBlockBashMod = function (selectId) {
+
+};
+
+ljUi.selectTimeBlockDefaultMod = function (selectId) {
+    var select = document.getElementById(ljTime.prefix + selectId.toString());
+    var last   = document.getElementById(ljTime.prefix + ljInput.select.toString());
+    var cancel = document.getElementById(ljTime.prefix + ljInput.lastSelect.toString());
+
+    if (null !== cancel) cancel.style.border = "";
+    if (null !== last)   last.style.border   = "3px dashed #000";
+    if (null !== select) select.style.border = "3px solid #000";
+
+    ljInput.selectBlock(selectId);
 };
 
 ljUi.selectLastBlock = function () {
@@ -271,11 +281,9 @@ ljUi.moveToLastEnd = function () {
 ljUi.removeBlock = function () {
     var id = ljInput.select;
 
-    ljUi.selectTimeBlock(ljInput.lastSelect, ljInput.lastSelect, id);
-    ljInput.selectBlock(ljInput.lastSelect);
-    ljInput.selectBlock(ljInput.lastSelect);
-
     ljInput.removeBlock(id);
+
+    ljUi.selectTimeBlockDefaultMod(ljInput.lastSelect);
 };
 
 ljUi.nowTimeToMissInput = function () {

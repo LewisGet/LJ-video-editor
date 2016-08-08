@@ -1,6 +1,7 @@
 var ljInput = {
     blocks: 0,
     prefix: "id-",
+    unSelect: 0,
     lastSelect: 0,
     select: 0
 };
@@ -17,12 +18,9 @@ var ljDefaultStyleValue = {
 };
 
 ljInput.createBlocks = function () {
-    var lastId = ljInput.select;
-    var cancelId = ljInput.lastSelect;
     var block = document.createElement("b");
     var id = ljInput.blocks;
 
-    ljInput.selectBlock(id);
     block.id = ljInput.prefix + ljInput.blocks;
 
     window.project.appendChild(block);
@@ -34,10 +32,11 @@ ljInput.createBlocks = function () {
     ljInput.setBlockStart(id, ljVideo.getTime());
     ljInput.setBlockEnd(id, ljVideo.getTime() + 2.5);
 
-    ljUi.selectTimeBlock(id, lastId, cancelId);
+    ljUi.selectTimeBlockDefaultMod(id);
 };
 
 ljInput.selectBlock = function (id) {
+    ljInput.unSelect = ljInput.lastSelect;
     ljInput.lastSelect = ljInput.select;
     ljInput.select = id;
 };

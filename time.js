@@ -24,12 +24,11 @@ ljTime.createBlocks = function (id) {
 
     block.id = ljTime.prefix + id;
     block.style.background = ljColor[parseInt(Math.random() * 10)];
+
     block.onclick = function () {
         var id = ljInput.getBlockId(this.id);
 
         ljUi.selectTimeBlock(id, ljInput.select, ljInput.lastSelect);
-
-        ljInput.selectBlock(id);
     };
 
     window.controllerTime.appendChild(block);
