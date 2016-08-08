@@ -27,6 +27,7 @@ var ljQuickCode = {
         float: "center",
         x: 1920 / 2,
         y: 30,
+        size: 88,
         diff: 100
     }
 };
@@ -357,6 +358,7 @@ ljUi.quickModifySetup = function (quickCode) {
         window.inputX.value = ljQuickCode.m.x;
         window.inputY.value = (ljQuickCode.m.y + (parseInt(quickCode[1]) * ljQuickCode.m.diff)) * -1;
         window.inputFloat.value = ljQuickCode.m.float;
+        window.inputSize.value = ljQuickCode.m.size.toString() + "px";
 
         if (quickCode[2])
         {
@@ -455,8 +457,6 @@ ljUi.displayToCam = function () {
 ljUi.toDefault = function (quickCode) {
     ljUi.openModifyPanel();
     ljUi.quickModifySetup(quickCode);
-
-    window.inputSize.value = "88px";
 
     ljUi.updateBlocks();
 };
