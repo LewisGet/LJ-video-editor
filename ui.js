@@ -39,11 +39,27 @@ ljUi.openVideo = function () {
 };
 
 ljUi.selectTimeBlock  = function (selectId) {
-    ljUi.selectTimeBlockDefaultMod(selectId);
+    if (ljUi.bashPanelStatus)
+    {
+        ljUi.selectTimeBlockBashMod(selectId);
+    }
+    else
+    {
+        ljUi.selectTimeBlockDefaultMod(selectId);
+    }
 };
 
 ljUi.selectTimeBlockBashMod = function (selectId) {
+    if (ljBash.select.includes(selectId))
+    {
+        return true;
+    }
 
+    ljBash.select.push(selectId);
+
+    window.bashPanel.title = ljBash.select.toString();
+
+    return true;
 };
 
 ljUi.selectTimeBlockDefaultMod = function (selectId) {
@@ -435,6 +451,10 @@ ljUi.soundClick = function (e) {
     window.controllerTime.scrollLeft = e.offsetX;
 };
 
+ljUi.bashPanelStatus = function () {
+    return ("on" == window.bashPanel.getAttribute("data-bash"));
+};
+
 ljUi.bashPanelOn = function () {
     window.bashPanel.setAttribute("data-bash", "on");
 
@@ -444,6 +464,8 @@ ljUi.bashPanelOn = function () {
 
 ljUi.bashPanelOff = function () {
     window.bashPanel.setAttribute("data-bash", "off");
+
+    ljBash.clearSelect();
 
     window.bashOn.style.display = "none";
     window.bashOff.style.display = "";
