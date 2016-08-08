@@ -21,7 +21,7 @@ ljBash.leftList = function () {
 	});
 };
 
-ljBash.RightList = function () {
+ljBash.rightList = function () {
 	ljBash.list(function(doNumber) {
 		return "r" + doNumber.toString();
 	});
