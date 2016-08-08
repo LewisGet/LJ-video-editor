@@ -14,6 +14,7 @@
     <script src="./input.js" type="text/javascript"></script>
     <script src="./display.js" type="text/javascript"></script>
     <script src="./ui.js" type="text/javascript"></script>
+    <script src="./bash.js" type="text/javascript"></script>
     <script src="./main.js" type="text/javascript"></script>
     <script src="./srtInput.js" type="text/javascript"></script>
     <script src="./save.js" type="text/javascript"></script>
@@ -34,6 +35,12 @@
         #project
         {
             display: none;
+        }
+
+        #bashPanel
+        {
+            display: inline-block;
+            background-color: #ebff2b;
         }
 
         #controllerTime
@@ -245,6 +252,20 @@
     <button onclick="ljUi.moveToLastEnd()" class="btn btn-default"><span class="glyphicon glyphicon-floppy-open"></span>移動製後</button>
     <button onclick="ljUi.toDefault('m21')" class="btn btn-default">Lewis</button>
     <button onclick="ljUi.toDefault('m12')" class="btn btn-default">Kevin</button>
+    <div id="bashPanel" onclick="" data-bash="off">
+        <button id="bashOff" onclick="ljUi.bashPanelOn()" class="btn btn-default">
+            批次
+        </button>
+        <div id="bashOn" style="display: none;">
+            <button onclick="ljUi.bashPanelOff()" class="btn btn-default">x</button>
+            <button onclick="ljBash.leftList()" class="btn btn-default">Left List</button>
+            <button onclick="ljBash.rightList()" class="btn btn-default">Right List</button>
+            <!--
+            <button onclick="ljBash.minList()">M1 List</button>
+            <button onclick="ljBash.minList()">M2 List</button>
+            -->
+        </div>
+    </div>
     <button onclick="ljUi.removeBlock()" class="btn btn-default"><span class="glyphicon glyphicon-floppy-remove"></span>刪除</button>
     <button onclick="ljUi.selectLastBlock()" class="btn btn-default"><span class="glyphicon glyphicon-link"></span>選取上個</button>
     <button onclick="ljUi.openSrtPanel()" class="btn btn-default"><span class="glyphicon glyphicon-book"></span>讀取 srt</button>

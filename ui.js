@@ -427,6 +427,20 @@ ljUi.soundClick = function (e) {
     window.controllerTime.scrollLeft = e.offsetX;
 };
 
+ljUi.bashPanelOn = function () {
+    window.bashPanel.setAttribute("data-bash", "on");
+
+    window.bashOn.style.display = "";
+    window.bashOff.style.display = "none";
+};
+
+ljUi.bashPanelOff = function () {
+    window.bashPanel.setAttribute("data-bash", "off");
+
+    window.bashOn.style.display = "none";
+    window.bashOff.style.display = "";
+};
+
 ljUi.init = function () {
     ljUi.closeModifyPanel();
     ljUi.closeSoundPanel();
