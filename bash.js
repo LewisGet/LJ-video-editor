@@ -27,6 +27,22 @@ ljBash.RightList = function () {
 	});
 };
 
+ljBash.shackAllOn = function () {
+	ljBash.each(function(id) {
+		var amAttr = ljUi.getAmButtonConfig(window.amOneSecShack);
+
+		ljInput.setBlockStyle(id, amAttr, 1);
+	});
+};
+
+ljBash.shackAllOff = function () {
+	ljBash.each(function(id) {
+		var amAttr = ljUi.getAmButtonConfig(window.amOneSecShack);
+
+		ljInput.setBlockStyle(id, amAttr, 0);
+	});
+};
+
 ljBash.each = function (excute) {
 
 	// 用開始時間來排序
