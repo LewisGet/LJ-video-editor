@@ -28,7 +28,7 @@ ljTime.createBlocks = function (id) {
     block.onclick = function () {
         var id = ljInput.getBlockId(this.id);
 
-        ljUi.selectTimeBlock(id, ljInput.select, ljInput.lastSelect);
+        ljUi.selectTimeBlock(id);
     };
 
     window.controllerTime.appendChild(block);
