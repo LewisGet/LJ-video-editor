@@ -62,5 +62,9 @@ ljBash.each = function (excute) {
 };
 
 ljBash.clearSelect = function () {
+	ljBash.each(function(id) {
+		ljUi.selectTimeBlockBashOff(id);
+	});
+
 	ljBash.select = [];
 };

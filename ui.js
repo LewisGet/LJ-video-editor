@@ -39,7 +39,7 @@ ljUi.openVideo = function () {
 };
 
 ljUi.selectTimeBlock  = function (selectId) {
-    if (ljUi.bashPanelStatus)
+    if (ljUi.bashPanelStatus())
     {
         ljUi.selectTimeBlockBashMod(selectId);
     }
@@ -49,6 +49,18 @@ ljUi.selectTimeBlock  = function (selectId) {
     }
 };
 
+ljUi.selectTimeBlockBashOn = function (selectId) {
+    var timeBar = document.getElementById(ljTime.prefix + selectId.toString());
+
+    if (null !== timeBar) timeBar.style.opacity = "0.3";
+};
+
+ljUi.selectTimeBlockBashOff = function (selectId) {
+    var timeBar = document.getElementById(ljTime.prefix + selectId.toString());
+
+    if (null !== timeBar) timeBar.style.opacity = "";
+};
+
 ljUi.selectTimeBlockBashMod = function (selectId) {
     if (ljBash.select.includes(selectId))
     {
@@ -56,6 +68,8 @@ ljUi.selectTimeBlockBashMod = function (selectId) {
     }
 
     ljBash.select.push(selectId);
+
+    ljUi.selectTimeBlockBashOn(selectId);
 
     window.bashPanel.title = ljBash.select.toString();
 
