@@ -2,12 +2,47 @@ var ljBash = {
 	select: []
 };
 
-ljBash.leftList = function () {
+ljBash.list = function (quickCodeModifies) {
+	var startNumber = 1;
 
+	ljBash.each(function(id) {
+		ljUi.selectTimeBlockDefaultMod(id);
+
+		ljUi.toDefault(quickCodeModifies(startNumber));
+		ljUi.setEnd();
+
+		startNumber++;
+	});
+};
+
+ljBash.leftList = function () {
+	ljBash.list(function(doNumber) {
+		return "l" + doNumber.toString();
+	});
 };
 
 ljBash.RightList = function () {
+	ljBash.list(function(doNumber) {
+		return "r" + doNumber.toString();
+	});
+};
 
+ljBash.each = function (excute) {
+
+	// 用開始時間來排序
+	ljBash.select.sort(function(a, b) {
+        a = parseFloat(ljInput.getBlockStart(a));
+        b = parseFloat(ljInput.getBlockStart(b));
+
+        return a == b
+            ? 0
+            : (a > b ? 1 : -1);
+    });
+
+	for (var i = 0; i < ljBash.select.length; i++)
+	{
+		excute(ljBash.select[i]);
+	}
 };
 
 ljBash.clearSelect = function () {
