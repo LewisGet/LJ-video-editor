@@ -76,7 +76,7 @@ ljUi.quickKeyExcute = function (e) {
         return true;
     }
 
-    if ("Space" == e.code)
+    if ("KeyB" == e.code)
     {
         ljUi.videoClick();
     }
