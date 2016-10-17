@@ -27,6 +27,23 @@ ljBash.rightList = function () {
     });
 };
 
+ljBash.big = function () {
+    ljBash.list(function(doNumber) {
+        return "b" + doNumber.toString();
+    });
+
+    ljBash.loop(function(list, i) {
+        if (i < 1)
+        {
+            return true;
+        }
+
+        lastBlockEndTime = ljInput.getBlockStart(list[i]);
+
+        ljInput.setBlockStart(list[i - 1], lastBlockEndTime);
+    });
+};
+
 ljBash.shackAllOn = function () {
     ljBash.each(function(id) {
         var amAttr = ljUi.getAmButtonConfig(window.amOneSecShack);
@@ -43,8 +60,7 @@ ljBash.shackAllOff = function () {
     });
 };
 
-ljBash.each = function (excute) {
-
+ljBash.loop = function (excute) {
     // 用開始時間來排序
     ljBash.select.sort(function(a, b) {
         a = parseFloat(ljInput.getBlockStart(a));
@@ -57,8 +73,14 @@ ljBash.each = function (excute) {
 
     for (var i = 0; i < ljBash.select.length; i++)
     {
-        excute(ljBash.select[i]);
+        excute(ljBash.select, i);
     }
+};
+
+ljBash.each = function (excute) {
+    ljBash.loop(function (list, i) {
+        excute(list[i]);
+    });
 };
 
 ljBash.clearSelect = function () {
