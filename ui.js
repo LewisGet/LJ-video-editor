@@ -29,7 +29,22 @@ var ljQuickCode = {
         y: 30,
         size: 88,
         diff: 100
-    }
+    },
+    // 放大
+    b: {
+        s: 88,
+        sizeDiff: 10
+    },
+
+    // 縮小
+    i: {
+        s: 88,
+        sizeDiff: -10
+    },
+
+    // 依照情況放大縮小
+    sb: {},
+    si: {}
 };
 
 ljUi.openVideo = function () {
@@ -372,6 +387,28 @@ ljUi.quickModifySetup = function (quickCode) {
             {
                 window.inputColor.value = ljQuickCode.r.c;
             }
+        }
+    }
+
+    if (quickCode[0] == "b")
+    {
+        window.inputSize.value = (ljQuickCode.b.s + (parseInt(quickCode[1]) * ljQuickCode.b.sizeDiff)).toString() + "px";
+    }
+
+    if (quickCode[0] == "i")
+    {
+        window.inputSize.value = (ljQuickCode.i.s + (parseInt(quickCode[1]) * ljQuickCode.i.sizeDiff)).toString() + "px";
+    }
+
+    if (quickCode[0] == "s")
+    {
+        if (quickCode[2] == "b")
+        {
+            window.inputSize.value = (parseInt(window.inputSize.value) + ljQuickCode.b.sizeDiff).toString() + "px";
+        }
+        else if (quickCode[2] == "i")
+        {
+            window.inputSize.value = (parseInt(window.inputSize.value) + ljQuickCode.i.sizeDiff).toString() + "px";
         }
     }
 };
