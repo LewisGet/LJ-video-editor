@@ -402,11 +402,11 @@ ljUi.quickModifySetup = function (quickCode) {
 
     if (quickCode[0] == "s")
     {
-        if (quickCode[2] == "b")
+        if (quickCode[1] == "b")
         {
             window.inputSize.value = (parseInt(window.inputSize.value) + ljQuickCode.b.sizeDiff).toString() + "px";
         }
-        else if (quickCode[2] == "i")
+        else if (quickCode[1] == "i")
         {
             window.inputSize.value = (parseInt(window.inputSize.value) + ljQuickCode.i.sizeDiff).toString() + "px";
         }
