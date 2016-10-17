@@ -40,7 +40,7 @@ ljBash.big = function () {
 
         lastBlockEndTime = ljInput.getBlockStart(list[i]);
 
-        ljInput.setBlockStart(list[i - 1], lastBlockEndTime);
+        ljInput.setBlockEnd(list[i - 1], lastBlockEndTime);
     });
 };
 
