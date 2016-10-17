@@ -1,7 +1,8 @@
 var ljUi = {
     prefix: "ui-",
     topOffset: 0,
-    leftOffset: 0
+    leftOffset: 0,
+    quickKey: false
 };
 
 var ljQuickCode = {
@@ -45,6 +46,82 @@ var ljQuickCode = {
     // 依照情況放大縮小
     sb: {},
     si: {}
+};
+
+ljUi.canQuickKey = function () {
+    return ljUi.quickKey;
+};
+
+ljUi.quickKeyOn = function () {
+    ljUi.quickKey = true;
+};
+
+ljUi.quickKeyOff = function () {
+    ljUi.quickKey = false;
+};
+
+ljUi.quickKeyExcute = function (e) {
+    if (! ljUi.canQuickKey)
+    {
+        if ("Escape" == e.code)
+        {
+            ljUi.closeModifyPanel();
+        }
+
+        if ("Enter" == e.code && ljUi.isModifyPanelOpen())
+        {
+            ljUi.updateBlocks();
+        }
+
+        return true;
+    }
+
+    if ("Space" == e.code)
+    {
+        ljUi.videoClick();
+    }
+
+    if ("KeyN" == e.code)
+    {
+        ljUi.createBlocks();
+    }
+
+    if ("KeyM" == e.code)
+    {
+        ljUi.openModifyPanel();
+    }
+
+    if ("KeyE" == e.code)
+    {
+        ljUi.setEnd();
+    }
+
+    if ("KeyH" == e.code)
+    {
+        ljUi.soundPanelDown();
+    }
+
+    if ("KeyJ" == e.code)
+    {
+        ljUi.soundPanelUp();
+    }
+
+    if ("KeyS" == e.code)
+    {
+        ljUi.downloadLastSave();
+    }
+
+    if ("KeyL" == e.code)
+    {
+        ljUi.toDefault('m21');
+    }
+
+    if ("KeyK" == e.code)
+    {
+        ljUi.toDefault('m12');
+    }
+
+    return true;
 };
 
 ljUi.openVideo = function () {
@@ -193,6 +270,8 @@ ljUi.controllerTimeSize = function () {
 };
 
 ljUi.openModifyPanel = function () {
+    ljUi.quickKeyOff();
+
     window.inputSelect = ljInput.select;
     window.inputContent.value = ljInput.getBlockContent(ljInput.select);
 
@@ -343,8 +422,19 @@ ljUi.nowTimeToMissInput = function () {
     window.inputMissWord.value += pex + (ljVideo.getTime() - ljInput.getBlockStart(ljInput.select)).toString() + ":";
 };
 
+ljUi.isModifyPanelOpen = function () {
+    if ("none" == window.inputPanel.style.display)
+    {
+        return false;
+    }
+
+    return true;
+};
+
 ljUi.closeModifyPanel = function () {
     window.inputPanel.style.display = "none";
+
+    ljUi.quickKeyOn();
 };
 
 ljUi.quickModifySetup = function (quickCode) {
@@ -433,10 +523,14 @@ ljUi.downloadLastSave = function () {
 
 ljUi.openSrtPanel = function () {
     window.srtPanel.style.display = "";
+
+    ljUi.quickKeyOff();
 };
 
 ljUi.closeSrtPanel = function () {
     window.srtPanel.style.display = "none";
+
+    ljUi.quickKeyOn();
 };
 
 ljUi.updateProject = function () {

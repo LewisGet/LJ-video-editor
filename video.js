@@ -10,6 +10,8 @@ ljVideo.open = function (file) {
 
     // for android
     window.displayVideo.play();
+
+    ljUi.quickKeyOn();
 };
 
 ljVideo.soundLoad = function (url) {
