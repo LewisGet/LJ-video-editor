@@ -27,11 +27,15 @@ ljBash.rightList = function () {
     });
 };
 
-ljBash.big = function () {
+ljBash.bigList = function () {
     ljBash.list(function(doNumber) {
         return "b" + doNumber.toString();
     });
 
+    ljBash.mixList();
+};
+
+ljBash.mixList = function () {
     ljBash.loop(function(list, i) {
         if (i < 1)
         {
