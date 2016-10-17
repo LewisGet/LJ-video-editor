@@ -61,7 +61,7 @@ ljUi.quickKeyOff = function () {
 };
 
 ljUi.quickKeyExcute = function (e) {
-    if (! ljUi.canQuickKey)
+    if (! ljUi.canQuickKey())
     {
         if ("Escape" == e.code)
         {
