@@ -48,6 +48,10 @@ var ljQuickCode = {
     si: {}
 };
 
+var ljQuickKey = {
+    Enter: 0
+};
+
 ljUi.canQuickKey = function () {
     return ljUi.quickKey;
 };
@@ -70,7 +74,20 @@ ljUi.quickKeyExcute = function (e) {
 
         if ("Enter" == e.code && ljUi.isModifyPanelOpen())
         {
-            ljUi.updateBlocks();
+            if (ljQuickKey.Enter < 1)
+            {
+                ljQuickKey.Enter++;
+            }
+            else
+            {
+                ljUi.updateBlocks();
+                ljQuickKey.Enter = 0;
+            }
+        }
+        else
+        {
+            // not enter clear enter time
+            ljQuickKey.Enter = 0;
         }
 
         return true;
@@ -579,6 +596,8 @@ ljUi.displayToCam = function () {
     document.body.style.background = "#00FF00";
 
     document.body.appendChild(window.displayBlocks);
+
+    ljUi.flushTime = function () {};
 
     window.displayBlocks.style = {};
 
