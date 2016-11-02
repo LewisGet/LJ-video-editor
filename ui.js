@@ -31,6 +31,9 @@ var ljQuickCode = {
         size: 88,
         diff: 100
     },
+    e: {
+        c: "#ffffff"
+    },
     // 放大
     b: {
         s: 88,
@@ -113,12 +116,12 @@ ljUi.quickKeyExcute = function (e) {
         ljUi.setEnd();
     }
 
-    if ("KeyH" == e.code)
+    if ("KeyG" == e.code)
     {
         ljUi.soundPanelDown();
     }
 
-    if ("KeyJ" == e.code)
+    if ("KeyT" == e.code)
     {
         ljUi.soundPanelUp();
     }
@@ -136,6 +139,11 @@ ljUi.quickKeyExcute = function (e) {
     if ("KeyK" == e.code)
     {
         ljUi.toDefault('m12');
+    }
+
+    if ("KeyJ" == e.code)
+    {
+        ljUi.toDefault('m03');
     }
 
     return true;
@@ -493,6 +501,10 @@ ljUi.quickModifySetup = function (quickCode) {
             else if (color == 2)
             {
                 window.inputColor.value = ljQuickCode.r.c;
+            }
+            else if (color == 3)
+            {
+                window.inputColor.value = ljQuickCode.e.c;
             }
         }
     }
