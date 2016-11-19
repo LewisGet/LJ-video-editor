@@ -653,16 +653,18 @@ ljUi.bashPanelOff = function () {
 };
 
 ljUi.cutBlock = function () {
-    var cutId    = ljInput.select;
-    var cutBlock = ljInput.getBlock(cutId);
-    var endTime  = ljInput.getDomEnd(cutBlock);
+    var cutId     = ljInput.select;
+    var cutBlock  = ljInput.getBlock(cutId);
+    var startTime = ljInput.getDomStart(cutBlock);
+    var endTime   = ljInput.getDomEnd(cutBlock);
+    var cutTime   = ljVideo.getTime();
 
-    if (ljVideo.getTime() > endTime)
+    if (cutTime < startTime && cutTime > endTime)
     {
         return true;
     }
 
-    ljInput.setBlockEnd(cutId, ljVideo.getTime());
+    ljInput.setBlockEnd(cutId, cutTime);
 
     ljInput.createBlocks();
 
