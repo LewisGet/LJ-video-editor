@@ -146,6 +146,11 @@ ljUi.quickKeyExcute = function (e) {
         ljUi.toDefault('m03');
     }
 
+    if ("KeyC" == e.code)
+    {
+        ljUi.cutBlock();
+    }
+
     return true;
 };
 
@@ -645,6 +650,28 @@ ljUi.bashPanelOff = function () {
 
     window.bashOn.style.display = "none";
     window.bashOff.style.display = "";
+};
+
+ljUi.cutBlock = function () {
+    var cutId    = ljInput.select;
+    var cutBlock = ljInput.getBlock(cutId);
+    var endTime  = ljInput.getDomEnd(cutBlock);
+
+    if (ljVideo.getTime() > endTime)
+    {
+        return true;
+    }
+
+    ljInput.setBlockEnd(cutId, ljVideo.getTime());
+
+    ljInput.createBlocks();
+
+    var cloneBlockId = ljInput.select;
+
+    ljInput.setBlockEnd(cloneBlockId, endTime);
+    ljInput.setBlockContent(cloneBlockId, ljInput.getDomContent(cutBlock));
+
+    return true;
 };
 
 ljUi.init = function () {
