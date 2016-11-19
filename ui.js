@@ -670,6 +670,11 @@ ljUi.cutBlock = function () {
 
     ljInput.setBlockEnd(cloneBlockId, endTime);
     ljInput.setBlockContent(cloneBlockId, ljInput.getDomContent(cutBlock));
+    ljInput.setBlockStyle(cloneBlockId, "x", ljInput.getDomStyle(cutBlock, "x"));
+    ljInput.setBlockStyle(cloneBlockId, "y", ljInput.getDomStyle(cutBlock, "y"));
+    ljInput.setBlockStyle(cloneBlockId, "color", ljInput.getDomStyle(cutBlock, "color"));
+    ljInput.setBlockStyle(cloneBlockId, "size", ljInput.getDomStyle(cutBlock, "size"));
+    ljInput.setBlockStyle(cloneBlockId, "float", ljInput.getDomStyle(cutBlock, "float"));
 
     return true;
 };
