@@ -1,5 +1,6 @@
 var ljTime = {
     prefix: "t-",
+    className: "timeBlock"
 };
 
 var ljColor = [
@@ -24,12 +25,7 @@ ljTime.createBlocks = function (id) {
 
     block.id = ljTime.prefix + id;
     block.style.background = ljColor[parseInt(Math.random() * 10)];
-
-    block.onclick = function () {
-        var id = ljInput.getBlockId(this.id);
-
-        ljUi.selectTimeBlock(id);
-    };
+    block.className = ljTime.className;
 
     window.controllerTime.appendChild(block);
 };
@@ -49,6 +45,25 @@ ljTime.videoTimeBlock = function () {
     window.controllerTimeTotalBar.style.width = (ljVideo.getTotalTime() * 100).toString() + "px";
 };
 
+ljTime.blockSelectInit = function () {
+    window.controllerTime.onclick = function (e) {
+        var block = e.toElement;
+
+        //block.classList.indexOf
+        if (! block.classList.contains(ljTime.className))
+        {
+            return true;
+        }
+
+        var id = ljInput.getBlockId(block.id);
+
+        ljUi.selectTimeBlock(id);
+
+        return true;
+    };
+};
+
 ljTime.init = function () {
     ljTime.videoTimeBlock();
+    ljTime.blockSelectInit();
 };
