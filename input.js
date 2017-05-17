@@ -102,12 +102,12 @@ ljInput.setBlockStyle = function (id, style, value) {
 
     if (value !== undefined)
     {
-        if (style.toLocaleString() == "x" && parseInt(value) < 0)
+        if (style.toLowerCase() == "x" && parseInt(value) < 0)
         {
             value = ljDefaultStyleValue.fullX + parseInt(value);
         }
 
-        if (style.toLocaleString() == "y" && parseInt(value) < 0)
+        if (style.toLowerCase() == "y" && parseInt(value) < 0)
         {
             value = ljDefaultStyleValue.fullY + parseInt(value);
         }
@@ -120,7 +120,7 @@ ljInput.setBlockStyle = function (id, style, value) {
             data.removeAttribute("data-" + style.toLowerCase());
         }
 
-        if (style.toLocaleString() == "color")
+        if (style.toLowerCase() == "color")
         {
             ljTime.modifiesBlock(id, {color: value});
         }
