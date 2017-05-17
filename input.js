@@ -94,7 +94,7 @@ ljInput.setBlockContent = function (id, value) {
 
     data.innerText = value;
 
-    ljTime.modifiesBlocks(id, {text: value});
+    ljTime.modifiesBlock(id, {text: value});
 };
 
 ljInput.setBlockStyle = function (id, style, value) {
@@ -122,7 +122,7 @@ ljInput.setBlockStyle = function (id, style, value) {
 
         if (style.toLocaleString() == "color")
         {
-            ljTime.modifiesBlocks(id, {color: value});
+            ljTime.modifiesBlock(id, {color: value});
         }
     }
 };
