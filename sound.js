@@ -5,23 +5,36 @@ var ljSound = {
 ljSound.openSound = function (file) {
     var url = URL.createObjectURL(file);
 
-    var wavesurfer = WaveSurfer.create({
-        container: '#soundBarTmp',
-        scrollParent: true
-    });
+    if (window.soundPanelFileIsPng.value == "false")
+    {
+        var wavesurfer = WaveSurfer.create({
+            container: '#soundBarTmp',
+            scrollParent: true
+        });
 
-    wavesurfer.load(url);
+        wavesurfer.load(url);
 
-    wavesurfer.on('ready', function () {
-        var canvas = ljSound.getCanvas();
+        wavesurfer.on('ready', function () {
+            var canvas = ljSound.getCanvas();
 
-        // clear cache
-        ljSound.clearCache();
+            // clear cache
+            ljSound.clearCache();
 
-        canvas.onclick = ljUi.soundClick;
+            canvas.onclick = ljUi.soundClick;
 
-        window.soundBar.appendChild(canvas);
-    });
+            window.soundBar.appendChild(canvas);
+        });
+    }
+    else
+    {
+        var png = document.createElement("img");
+
+        png.setAttribute("href", url);
+        png.style.width = window.controllerTimeTotalBar.style.width;
+        png.style.height = "50px";
+
+        window.soundBar.appendChild(png);
+    }
 };
 
 ljSound.getCanvas = function () {
