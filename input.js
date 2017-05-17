@@ -93,6 +93,8 @@ ljInput.setBlockContent = function (id, value) {
     var data = document.getElementById(ljInput.prefix + id);
 
     data.innerText = value;
+
+    ljTime.modifiesBlocks(id, {text: value});
 };
 
 ljInput.setBlockStyle = function (id, style, value) {
@@ -116,6 +118,11 @@ ljInput.setBlockStyle = function (id, style, value) {
         if (value == "")
         {
             data.removeAttribute("data-" + style.toLowerCase());
+        }
+
+        if (style.toLocaleString() == "color")
+        {
+            ljTime.modifiesBlocks(id, {color: value});
         }
     }
 };
@@ -187,8 +194,6 @@ ljInput.updateBlocks = function () {
 
         ljInput.setBlockStyle(ljInput.select, key.toLowerCase(), window['input' + key].value);
     }
-
-    ljTime.modifiesBlocks(ljInput.select, {text: new_content, color: window.inputColor.value});
 };
 
 ljInput.removeDom = function (dom) {
