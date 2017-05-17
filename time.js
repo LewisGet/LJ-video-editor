@@ -30,6 +30,20 @@ ljTime.createBlocks = function (id) {
     window.controllerTime.appendChild(block);
 };
 
+ljTime.modifiesBlock = function (id, opt) {
+    dom = document.getElementById(ljTime.prefix + id);
+
+    if (opt.text) {
+        dom.innerText = opt.text;
+    }
+
+    if (opt.color) {
+        dom.style.color = opt.color;
+    }
+
+    return dom;
+};
+
 ljTime.afterSetBlockStart = function (dom, value) {
     dom.style.left = (value * 100).toString() + "px";
 

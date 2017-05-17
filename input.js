@@ -173,7 +173,9 @@ ljInput.getAllInput = function () {
 };
 
 ljInput.updateBlocks = function () {
-    ljInput.setBlockContent(ljInput.select, window.inputContent.value);
+    var new_content = window.inputContent.value;
+
+    ljInput.setBlockContent(ljInput.select, new_content);
 
     var styleModifies = ljInput.getAllInput();
 
@@ -185,6 +187,8 @@ ljInput.updateBlocks = function () {
 
         ljInput.setBlockStyle(ljInput.select, key.toLowerCase(), window['input' + key].value);
     }
+
+    ljTime.modifiesBlocks(ljInput.select, {text: new_content, color: window.inputColor.value});
 };
 
 ljInput.removeDom = function (dom) {
